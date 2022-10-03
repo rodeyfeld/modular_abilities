@@ -7,4 +7,3 @@ class_name AbilityData
 @export var name:String
 @export var description:String
 @export var cooldown:float
-

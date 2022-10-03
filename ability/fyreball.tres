@@ -8,6 +8,11 @@
 
 [sub_resource type="Resource" id="Resource_7el45"]
 script = ExtResource("1_01ku4")
+target_flags = 0
+behavior_flags = 1
+name = null
+description = null
+cooldown = null
 
 [sub_resource type="Resource" id="Resource_wji4i"]
 script = ExtResource("2_pqvws")
@@ -20,7 +25,7 @@ script = ExtResource("1_7w4fg")
 int_fields = [SubResource("Resource_wji4i")]
 float_fields = null
 action_type = 1
-target = null
+target = 3
 to_be_removed = null
 
 [sub_resource type="Resource" id="Resource_1mmnh"]

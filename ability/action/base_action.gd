@@ -4,10 +4,10 @@ class_name BaseAction
 
 var data:AbilityActionData
 
-func setup(data:AbilityActionData):
-	self.data = data
+func setup(data_param:AbilityActionData):
+	self.data = data_param
 	pass
 	
-func execute(caster_ability:Ability, target:Entity, target_point:Vector2):
+func execute(_caster_ability:Ability, _target:Entity, _target_point:Vector2):
 	pass
 

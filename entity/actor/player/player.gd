@@ -7,7 +7,11 @@ var data_driven_ability_script = load("res://ability/data_driven_ability.gd")
 
 
 func _ready():
+	print(health)
 	var data_driven_ability = data_driven_ability_script.new()
-	data_driven_ability.parse(fyreball)
-	print(fyreball.ability_data)
+	var ability:Ability = data_driven_ability.parse(fyreball)
+	ability.execute(self, [self, Vector2(0,0)])
+	print(health)
+	
+	
 	
