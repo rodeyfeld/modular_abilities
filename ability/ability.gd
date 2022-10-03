@@ -22,7 +22,7 @@ var target_unit:Entity
 func setup(data:AbilityData):
 	ability_data = data
 	targets = []
-	event_register[ON_ABILITY_START] = []
+	event_register[DataDrivenAbilitySingleton.event_types.ON_ABILITY_START] = []
 	
 func execute(caster:Entity, target:Array):
 	self.caster = caster

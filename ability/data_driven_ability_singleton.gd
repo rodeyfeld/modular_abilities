@@ -1,7 +1,10 @@
 extends Node
 
-
-
+enum event_types {
+	NONE,
+	ON_SPELL_START,
+	ON_ABILITY_START,
+}
 
 enum action_types {
 	NONE,
