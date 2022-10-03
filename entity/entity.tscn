@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://58a3duvcwj45"]
+
+[ext_resource type="Script" path="res://entity/entity.gd" id="1_rxq8h"]
+[ext_resource type="PackedScene" uid="uid://dhutwh8j7r7uu" path="res://entity/attach_point.tscn" id="2_gpigp"]
+[ext_resource type="PackedScene" uid="uid://jtbcvxuvqak" path="res://entity/projectile/projectile_controller.tscn" id="2_lcyug"]
+[ext_resource type="Texture2D" uid="uid://tkvb54ag8h7k" path="res://icon.svg" id="4_vtktb"]
+
+[node name="entity" type="CharacterBody2D"]
+script = ExtResource("1_rxq8h")
+
+[node name="attach_point" parent="." instance=ExtResource("2_gpigp")]
+
+[node name="projectile_controller" parent="." instance=ExtResource("2_lcyug")]
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_vtktb")

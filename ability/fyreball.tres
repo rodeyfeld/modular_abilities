@@ -1,0 +1,36 @@
+[gd_resource type="Resource" load_steps=10 format=3 uid="uid://br7vuop0txytw"]
+
+[ext_resource type="Script" path="res://ability/ability_data.gd" id="1_01ku4"]
+[ext_resource type="Script" path="res://ability/ability_action_data.gd" id="1_7w4fg"]
+[ext_resource type="Script" path="res://ability/data_driven_ability.gd" id="1_s4i4v"]
+[ext_resource type="Script" path="res://ability/fields/int_field.gd" id="2_pqvws"]
+[ext_resource type="Script" path="res://ability/ability_event_data.gd" id="3_ik8vp"]
+
+[sub_resource type="Resource" id="Resource_7el45"]
+script = ExtResource("1_01ku4")
+
+[sub_resource type="Resource" id="Resource_wji4i"]
+script = ExtResource("2_pqvws")
+name = "amount"
+value = 1
+to_be_removed = null
+
+[sub_resource type="Resource" id="Resource_knih1"]
+script = ExtResource("1_7w4fg")
+int_fields = [SubResource("Resource_wji4i")]
+float_fields = null
+action_type = 1
+target = null
+to_be_removed = null
+
+[sub_resource type="Resource" id="Resource_1mmnh"]
+script = ExtResource("3_ik8vp")
+event_type = 2
+actions = [SubResource("Resource_knih1")]
+modifiers = null
+
+[resource]
+script = ExtResource("1_s4i4v")
+ability_data = SubResource("Resource_7el45")
+ability_event_data = [SubResource("Resource_1mmnh")]
+test_ = null

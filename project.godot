@@ -1,0 +1,96 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+_global_script_classes=[{
+"base": "Node2D",
+"class": &"Ability",
+"language": &"GDScript",
+"path": "res://ability/ability.gd"
+}, {
+"base": "Resource",
+"class": &"AbilityActionData",
+"language": &"GDScript",
+"path": "res://ability/ability_action_data.gd"
+}, {
+"base": "Resource",
+"class": &"AbilityData",
+"language": &"GDScript",
+"path": "res://ability/ability_data.gd"
+}, {
+"base": "Resource",
+"class": &"AbilityEventData",
+"language": &"GDScript",
+"path": "res://ability/ability_event_data.gd"
+}, {
+"base": "Resource",
+"class": &"AbilityModifierData",
+"language": &"GDScript",
+"path": "res://ability/ability_modifier_data.gd"
+}, {
+"base": "Node",
+"class": &"BaseAction",
+"language": &"GDScript",
+"path": "res://ability/action/base_action.gd"
+}, {
+"base": "Resource",
+"class": &"DataDrivenAbility",
+"language": &"GDScript",
+"path": "res://ability/data_driven_ability.gd"
+}, {
+"base": "CharacterBody2D",
+"class": &"Entity",
+"language": &"GDScript",
+"path": "res://entity/entity.gd"
+}, {
+"base": "Resource",
+"class": &"FloatField",
+"language": &"GDScript",
+"path": "res://ability/fields/float_field.gd"
+}, {
+"base": "Resource",
+"class": &"IntField",
+"language": &"GDScript",
+"path": "res://ability/fields/int_field.gd"
+}, {
+"base": "Entity",
+"class": &"Player",
+"language": &"GDScript",
+"path": "res://entity/actor/player/player.gd"
+}, {
+"base": "Node2D",
+"class": &"ProjectileController",
+"language": &"GDScript",
+"path": "res://entity/projectile/projectile_controller.gd"
+}]
+_global_script_class_icons={
+"Ability": "",
+"AbilityActionData": "",
+"AbilityData": "",
+"AbilityEventData": "",
+"AbilityModifierData": "",
+"BaseAction": "",
+"DataDrivenAbility": "",
+"Entity": "",
+"FloatField": "",
+"IntField": "",
+"Player": "",
+"ProjectileController": ""
+}
+
+[application]
+
+config/name="modular_testing"
+run/main_scene="res://world.tscn"
+config/features=PackedStringArray("4.0", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+DataDrivenAbilitySingleton="*res://ability/data_driven_ability_singleton.gd"
