@@ -9,6 +9,7 @@
 script = ExtResource("1_rxq8h")
 
 [node name="attach_point" parent="." instance=ExtResource("2_gpigp")]
+position = Vector2(100, 0)
 
 [node name="projectile_controller" parent="." instance=ExtResource("2_lcyug")]
 

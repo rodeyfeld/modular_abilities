@@ -35,7 +35,6 @@ func setup(data:AbilityData):
 	event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT] = []
 	
 func execute(caster_param:Entity, target_param:Array):
-	print(channelled)
 	caster = caster_param
 	targets = target_param
 	is_running = true

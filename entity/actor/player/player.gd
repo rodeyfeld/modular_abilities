@@ -4,15 +4,17 @@ class_name Player
 
 var fyreball = preload("res://ability/fyreball.tres")
 var data_driven_ability_script = load("res://ability/data_driven_ability.gd")
-
+var ability:Ability
 
 func _ready():
-	print(health)
 	var data_driven_ability = data_driven_ability_script.new()
-	var ability:Ability = data_driven_ability.parse(fyreball)
+	ability = data_driven_ability.parse(fyreball)
 	add_child(ability)
-	ability.execute(self, [self, Vector2(0,0)])
-	print(health)
+	
+	
+func _physics_process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		ability.execute(self, [self, Vector2(0,0)])
 	
 	
 	
