@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://7lugd8uxk4km"]
+[gd_scene load_steps=3 format=3 uid="uid://7lugd8uxk4km"]
 
 [ext_resource type="PackedScene" uid="uid://bo267wd0s5f3r" path="res://entity/actor/player/player.tscn" id="1_5d3qy"]
+[ext_resource type="PackedScene" uid="uid://58a3duvcwj45" path="res://entity/entity.tscn" id="2_ga00o"]
 
 [node name="Node2d" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_5d3qy")]
-position = Vector2(46, 11)
+modulate = Color(0.905882, 0, 0.470588, 1)
+position = Vector2(-83, 0)
+
+[node name="entity" parent="." instance=ExtResource("2_ga00o")]
+position = Vector2(32, -117)

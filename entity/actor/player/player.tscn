@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bo267wd0s5f3r"]
+[gd_scene load_steps=4 format=3 uid="uid://bo267wd0s5f3r"]
 
 [ext_resource type="PackedScene" uid="uid://58a3duvcwj45" path="res://entity/entity.tscn" id="1_cahfy"]
 [ext_resource type="Script" path="res://entity/actor/player/player.gd" id="2_ajgj1"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k1aqk"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
 [node name="player" instance=ExtResource("1_cahfy")]
 script = ExtResource("2_ajgj1")
+
+[node name="Sprite2d" parent="." index="2"]
+modulate = Color(0.501961, 0.027451, 0.27451, 1)
+texture = SubResource("CompressedTexture2D_k1aqk")
+
+[node name="Camera2d" type="Camera2D" parent="." index="3"]
+current = true

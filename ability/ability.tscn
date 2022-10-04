@@ -2,5 +2,7 @@
 
 [ext_resource type="Script" path="res://ability/ability.gd" id="1_3um11"]
 
-[node name="ability" type="Node2D"]
+[node name="Ability" type="Node2D"]
 script = ExtResource("1_3um11")
+
+[node name="CooldownTimer" type="Timer" parent="."]

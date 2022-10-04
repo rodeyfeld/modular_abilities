@@ -4,6 +4,7 @@ enum event_types {
 	NONE,
 	ON_SPELL_START,
 	ON_ABILITY_START,
+	ON_PROJECTILE_HIT,
 }
 
 enum action_types {

@@ -10,6 +10,7 @@ func _ready():
 	print(health)
 	var data_driven_ability = data_driven_ability_script.new()
 	var ability:Ability = data_driven_ability.parse(fyreball)
+	add_child(ability)
 	ability.execute(self, [self, Vector2(0,0)])
 	print(health)
 	
