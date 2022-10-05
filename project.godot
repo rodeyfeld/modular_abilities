@@ -34,6 +34,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://ability/ability_modifier_data.gd"
 }, {
+"base": "Entity",
+"class": &"Actor",
+"language": &"GDScript",
+"path": "res://entity/actor/actor.gd"
+}, {
 "base": "Node",
 "class": &"BaseAction",
 "language": &"GDScript",
@@ -43,6 +48,11 @@ _global_script_classes=[{
 "class": &"DataDrivenAbility",
 "language": &"GDScript",
 "path": "res://ability/data_driven_ability.gd"
+}, {
+"base": "Actor",
+"class": &"Enemy",
+"language": &"GDScript",
+"path": "res://entity/actor/enemy/enemy.gd"
 }, {
 "base": "CharacterBody2D",
 "class": &"Entity",
@@ -59,15 +69,15 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://ability/fields/int_field.gd"
 }, {
-"base": "Entity",
+"base": "Actor",
 "class": &"Player",
 "language": &"GDScript",
 "path": "res://entity/actor/player/player.gd"
 }, {
-"base": "Node2D",
-"class": &"ProjectileController",
+"base": "Entity",
+"class": &"Projectile",
 "language": &"GDScript",
-"path": "res://entity/projectile/projectile_controller.gd"
+"path": "res://entity/spell_projectiles/projectile.gd"
 }]
 _global_script_class_icons={
 "Ability": "",
@@ -75,13 +85,15 @@ _global_script_class_icons={
 "AbilityData": "",
 "AbilityEventData": "",
 "AbilityModifierData": "",
+"Actor": "",
 "BaseAction": "",
 "DataDrivenAbility": "",
+"Enemy": "",
 "Entity": "",
 "FloatField": "",
 "IntField": "",
 "Player": "",
-"ProjectileController": ""
+"Projectile": ""
 }
 
 [application]
@@ -94,3 +106,4 @@ config/icon="res://icon.svg"
 [autoload]
 
 DataDrivenAbilitySingleton="*res://ability/data_driven_ability_singleton.gd"
+World="*res://world.tscn"

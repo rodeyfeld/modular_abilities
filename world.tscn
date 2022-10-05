@@ -1,13 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://7lugd8uxk4km"]
 
-[ext_resource type="PackedScene" uid="uid://bo267wd0s5f3r" path="res://entity/actor/player/player.tscn" id="1_5d3qy"]
-[ext_resource type="PackedScene" uid="uid://58a3duvcwj45" path="res://entity/entity.tscn" id="2_ga00o"]
+[ext_resource type="PackedScene" uid="uid://cack2j01rqya7" path="res://entity/actor/player/player.tscn" id="1_ypvuq"]
+[ext_resource type="PackedScene" uid="uid://s4ks1eno3d5d" path="res://entity/actor/enemy/enemy.tscn" id="2_45aac"]
 
-[node name="Node2d" type="Node2D"]
+[node name="World" type="Node2D"]
 
-[node name="player" parent="." instance=ExtResource("1_5d3qy")]
-modulate = Color(0.905882, 0, 0.470588, 1)
-position = Vector2(-83, 0)
+[node name="ProjectileContainer" type="Node2D" parent="."]
 
-[node name="entity" parent="." instance=ExtResource("2_ga00o")]
-position = Vector2(32, -117)
+[node name="Player" parent="." instance=ExtResource("1_ypvuq")]
+position = Vector2(44, -164)
+
+[node name="Enemy" parent="." instance=ExtResource("2_45aac")]
+position = Vector2(408, -169)
+
+[node name="Enemy2" parent="." instance=ExtResource("2_45aac")]
+position = Vector2(415, 166)

@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhutwh8j7r7uu"]
-
-[ext_resource type="Script" path="res://entity/attach_point.gd" id="1_d5krl"]
-
-[node name="attach_point" type="Node2D"]
-script = ExtResource("1_d5krl")
-
-[node name="ability_offensive_attach_point" type="Node2D" parent="."]

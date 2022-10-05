@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://s4ks1eno3d5d"]
+
+[ext_resource type="PackedScene" uid="uid://dlhhp4yta78i6" path="res://entity/actor/actor.tscn" id="1_f0ouo"]
+[ext_resource type="Script" path="res://entity/actor/enemy/enemy.gd" id="2_n3slk"]
+
+[node name="Enemy" instance=ExtResource("1_f0ouo")]
+modulate = Color(0.854902, 0, 0.192157, 1)
+script = ExtResource("2_n3slk")
+
+[node name="Sprite2d" parent="." index="1"]
+modulate = Color(0.262745, 0.541176, 1, 1)
+
+[editable path="AttachPoint"]

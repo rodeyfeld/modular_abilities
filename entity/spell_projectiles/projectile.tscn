@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8mtuxcd6tw7n"]
+
+[ext_resource type="PackedScene" uid="uid://dmfrqt2kt6q6u" path="res://entity/entity.tscn" id="1_seja2"]
+[ext_resource type="Script" path="res://entity/spell_projectiles/projectile.gd" id="2_p22fd"]
+
+[node name="Projectile" instance=ExtResource("1_seja2")]
+modulate = Color(1, 1, 0.466667, 1)
+script = ExtResource("2_p22fd")
+initial_speed = null
+initial_direction = null
