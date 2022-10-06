@@ -9,7 +9,6 @@ var data_driven_ability_script = load("res://ability/data_driven_ability.gd")
 var ability:Ability
 
 func _ready():
-	print("player")
 	var data_driven_ability = data_driven_ability_script.new()
 	ability = data_driven_ability.parse(fyreball)
 	add_child(ability)

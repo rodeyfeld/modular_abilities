@@ -19,5 +19,5 @@ func on_hit():
 
 func _on_area_2d_area_entered(area):
 #	print("HI")
-	var test = area.get_root()
-	emit_signal("projectile_hit", area.get_tree().get_root())
+	var test = area.owner
+	emit_signal("projectile_hit", area.owner)
