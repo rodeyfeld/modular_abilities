@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dx13xyiniobo6"]
+
+[node name="unit_detection_zone" type="Area2D"]

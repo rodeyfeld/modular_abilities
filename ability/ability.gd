@@ -37,7 +37,7 @@ func setup(data:AbilityData):
 	event_register[DataDrivenAbilitySingleton.event_types.ON_SPELL_START] = []
 	event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT] = []
 	
-func execute(caster_param:Entity, target_dict_param:Dictionary):
+func execute(caster_param:Actor, target_dict_param:Dictionary):
 	caster = caster_param
 	targets = target_dict_param
 	is_running = true
@@ -69,8 +69,11 @@ func on_spell_start():
 #	targets.append(target_unit)
 	await perform_actions(event_register[DataDrivenAbilitySingleton.event_types.ON_SPELL_START])
 		
-func on_projectile_hit(target):
-	
+func on_projectile_hit(target:Actor):
 	if event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT] != []:
 		for action in event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT]:
 			await action.execute(self, target, target.position)
+		if ability_data.num_repeat > 0:
+		#	ability.execute(self, {'target_unit':self, 'target_position': get_global_mouse_position()})
+			var new_target_position:Vector2 = target.nearby_allied_units.pop_front().global_position
+			await execute(target, {'target_unit':target, 'target_position': new_target_position})

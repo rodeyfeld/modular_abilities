@@ -15,4 +15,8 @@ current = true
 [node name="Area2d" parent="." index="3"]
 collision_layer = 1
 
+[node name="NearbyUnitArea" parent="." index="5"]
+collision_layer = 0
+collision_mask = 0
+
 [editable path="AttachPoint"]

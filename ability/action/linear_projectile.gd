@@ -12,13 +12,13 @@ func setup(data_param:AbilityActionData):
 		if field.name == 'speed':
 			speed = field.value
 
-func execute(caster_ability:Ability, target:Entity, target_position:Vector2):
+func execute(caster_ability:Ability, target:Actor, target_position:Vector2):
 	var attach_node:Node2D = caster_ability.caster.get_node("AttachPoint/AbilityOffensiveAttachPoint")
 	var attach_global_position:Vector2 = attach_node.global_position
 	
 	var projectile:Projectile = projectile_scene.instantiate()
 	var projectile_container_node = caster_ability.caster.get_tree().get_root().get_node("World/ProjectileContainer")
-	projectile_container_node.add_child(projectile)
+	projectile_container_node.call_deferred("add_child", projectile)
 #	var projectile_controller:ProjectileController = entity.get_node("projectile_controller")
 #	target_point.y = attach_global_position.y
 	projectile.global_position = attach_global_position

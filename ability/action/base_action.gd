@@ -8,6 +8,6 @@ func setup(data_param:AbilityActionData):
 	self.data = data_param
 	pass
 	
-func execute(_caster_ability:Ability, _target:Entity, _target_point:Vector2):
+func execute(_caster_ability:Ability, _target:Actor, _target_point:Vector2):
 	pass
 

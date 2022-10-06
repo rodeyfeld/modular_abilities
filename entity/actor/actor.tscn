@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlhhp4yta78i6"]
+[gd_scene load_steps=6 format=3 uid="uid://dlhhp4yta78i6"]
 
 [ext_resource type="PackedScene" uid="uid://dmfrqt2kt6q6u" path="res://entity/entity.tscn" id="1_q5j2b"]
 [ext_resource type="PackedScene" uid="uid://y0copfykvkvc" path="res://entity/actor/attach_point.tscn" id="2_ge53c"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjair"]
 size = Vector2(128, 128)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wdaas"]
+radius = 640.953
 
 [node name="Actor" instance=ExtResource("1_q5j2b")]
 script = ExtResource("2_xdf50")
@@ -18,5 +21,14 @@ collision_mask = 0
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="Area2d" index="0"]
 shape = SubResource("RectangleShape2D_fjair")
+
+[node name="NearbyUnitArea" type="Area2D" parent="." index="4"]
+modulate = Color(0.192157, 0.192157, 0.192157, 0.258824)
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="NearbyUnitArea" index="0"]
+shape = SubResource("CircleShape2D_wdaas")
+
+[connection signal="body_entered" from="NearbyUnitArea" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="NearbyUnitArea" to="." method="_on_area_2d_2_body_exited"]
 
 [editable path="AttachPoint"]
