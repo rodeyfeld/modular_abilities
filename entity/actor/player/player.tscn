@@ -6,10 +6,13 @@
 [node name="Player" instance=ExtResource("1_f0ouo")]
 script = ExtResource("2_53o15")
 
-[node name="Sprite2d" parent="." index="1"]
+[node name="Sprite2d" parent="." index="0"]
 modulate = Color(0.262745, 0.541176, 1, 1)
 
 [node name="Camera2d" type="Camera2D" parent="." index="2"]
 current = true
+
+[node name="Area2d" parent="." index="3"]
+collision_layer = 1
 
 [editable path="AttachPoint"]

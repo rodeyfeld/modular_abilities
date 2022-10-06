@@ -106,4 +106,9 @@ config/icon="res://icon.svg"
 [autoload]
 
 DataDrivenAbilitySingleton="*res://ability/data_driven_ability_singleton.gd"
-World="*res://world.tscn"
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemy"
+2d_physics/layer_3="projectile"

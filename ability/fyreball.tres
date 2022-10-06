@@ -17,7 +17,7 @@ cooldown = null
 [sub_resource type="Resource" id="Resource_l6h7x"]
 script = ExtResource("2_pqvws")
 name = "speed"
-value = 2
+value = 200
 to_be_removed = null
 
 [sub_resource type="Resource" id="Resource_f0vtw"]

@@ -5,9 +5,11 @@
 
 [node name="Enemy" instance=ExtResource("1_f0ouo")]
 modulate = Color(0.854902, 0, 0.192157, 1)
+collision_layer = 1
+collision_mask = 1
 script = ExtResource("2_n3slk")
 
-[node name="Sprite2d" parent="." index="1"]
+[node name="Sprite2d" parent="." index="0"]
 modulate = Color(0.262745, 0.541176, 1, 1)
 
 [editable path="AttachPoint"]

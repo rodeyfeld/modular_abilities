@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://y0copfykvkvc"]
+[gd_scene load_steps=3 format=3 uid="uid://y0copfykvkvc"]
 
 [ext_resource type="Script" path="res://entity/actor/attach_point.gd" id="1_im1gy"]
+[ext_resource type="Texture2D" uid="uid://tkvb54ag8h7k" path="res://icon.svg" id="2_v0ee5"]
 
 [node name="AttachPoint" type="Node2D"]
 script = ExtResource("1_im1gy")
 
 [node name="AbilityOffensiveAttachPoint" type="Marker2D" parent="."]
-scale = Vector2(1, 1)
+
+[node name="Sprite2d" type="Sprite2D" parent="AbilityOffensiveAttachPoint"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_v0ee5")

@@ -45,8 +45,8 @@ func execute(caster_param:Entity, target_dict_param:Dictionary):
 	target_unit = target_dict_param['target_unit']
 	target_position = target_dict_param['target_position']
 	
-	if event_register[DataDrivenAbilitySingleton.event_types.ON_ABILITY_START] != null:
-		print("Okay starting")
+	if event_register[DataDrivenAbilitySingleton.event_types.ON_ABILITY_START] != []:
+		print("RUNNING event_types.ON_ABILITY_START")
 		perform_actions(event_register[DataDrivenAbilitySingleton.event_types.ON_ABILITY_START])
 	if channelled:
 		pass
@@ -69,3 +69,8 @@ func on_spell_start():
 #	targets.append(target_unit)
 	await perform_actions(event_register[DataDrivenAbilitySingleton.event_types.ON_SPELL_START])
 		
+func on_projectile_hit(target):
+	
+	if event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT] != []:
+		for action in event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT]:
+			await action.execute(self, target, target.position)

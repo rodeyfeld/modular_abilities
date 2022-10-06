@@ -9,6 +9,7 @@ const ability_scene = preload("res://ability/ability.tscn")
 @export var ability_event_data:Array[AbilityEventData]
 @export var test_:int
 
+
 func parse(raw_ability:DataDrivenAbility) -> Ability:
 	var ability:Ability = ability_scene.instantiate()
 	ability.setup(raw_ability.ability_data)
@@ -19,4 +20,3 @@ func parse(raw_ability:DataDrivenAbility) -> Ability:
 			base_action.setup(action)
 			ability.event_register[ability_event.event_type].append(base_action)
 	return ability
-	
