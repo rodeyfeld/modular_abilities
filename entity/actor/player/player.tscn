@@ -1,22 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://cack2j01rqya7"]
+[gd_scene load_steps=5 format=3 uid="uid://cack2j01rqya7"]
 
 [ext_resource type="PackedScene" uid="uid://dlhhp4yta78i6" path="res://entity/actor/actor.tscn" id="1_f0ouo"]
 [ext_resource type="Script" path="res://entity/actor/player/player.gd" id="2_53o15"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_drggo"]
+radius = 340.982
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8y6xy"]
+radius = 74.0608
+
 [node name="Player" instance=ExtResource("1_f0ouo")]
+collision_layer = 1
 script = ExtResource("2_53o15")
 
-[node name="Sprite2d" parent="." index="0"]
-modulate = Color(0.262745, 0.541176, 1, 1)
-
-[node name="Camera2d" type="Camera2D" parent="." index="2"]
+[node name="Camera2d" type="Camera2D" parent="." index="0"]
 current = true
 
-[node name="Area2d" parent="." index="3"]
-collision_layer = 1
-
-[node name="NearbyUnitArea" parent="." index="5"]
+[node name="UnitDetectionZone" parent="." index="2"]
 collision_layer = 0
+
+[node name="CollisionShape2d" parent="UnitDetectionZone" index="0"]
+shape = SubResource("CircleShape2D_drggo")
+
+[node name="Hurtbox" parent="." index="3"]
+collision_layer = 4
 collision_mask = 0
 
+[node name="CollisionShape2d" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_8y6xy")
+
+[node name="Sprite2d" parent="." index="4"]
+modulate = Color(0.262745, 0.541176, 1, 1)
+
 [editable path="AttachPoint"]
+[editable path="UnitDetectionZone"]
+[editable path="Hurtbox"]

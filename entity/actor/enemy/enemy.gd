@@ -5,13 +5,12 @@ class_name Enemy
 func _ready():
 	title = "enemy"
 	await get_tree().process_frame
-	nearby_allied_units = get_node("NearbyUnitArea").get_overlapping_areas()
-	print(nearby_allied_units)
-
-func _on_area_2d_area_entered(area):
-#	print("HI")
-	var test = area.owner
-	emit_signal("projectile_hit", area.owner)
+#	nearby_targetable_units = get_node("UnitDetectionZone").get_overlapping_areas()
+#	print(nearby_targetable_units)
 
 func _physics_process(delta):
-	print("ENEMY:", nearby_allied_units)
+	print("ENEMY:", nearby_targetable_units)
+
+func _on_hurtbox_area_entered(area):
+	var test = area.owner
+	emit_signal("projectile_hit", area.owner)

@@ -75,5 +75,6 @@ func on_projectile_hit(target:Actor):
 			await action.execute(self, target, target.position)
 		if ability_data.num_repeat > 0:
 		#	ability.execute(self, {'target_unit':self, 'target_position': get_global_mouse_position()})
-			var new_target_position:Vector2 = target.nearby_allied_units.pop_front().global_position
+			var new_target_position:Vector2 = target.nearby_targetable_units.pop_front().global_position
 			await execute(target, {'target_unit':target, 'target_position': new_target_position})
+			ability_data.num_repeat -= 1

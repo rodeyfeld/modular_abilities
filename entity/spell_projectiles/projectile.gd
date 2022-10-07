@@ -16,8 +16,6 @@ func fire():
 func on_hit():
 	pass
 
-
-func _on_area_2d_area_entered(area):
-#	print("HI")
+func _on_hitbox_area_entered(area):
 	var test = area.owner
 	emit_signal("projectile_hit", area.owner)
