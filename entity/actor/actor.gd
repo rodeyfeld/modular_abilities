@@ -22,7 +22,8 @@ func _physics_process(delta):
 
 
 func _on_unit_detection_zone_body_entered(body):
-	nearby_targetable_units.append(body)
+	if self.get_instance_id() != body.get_instance_id():
+		nearby_targetable_units.append(body)
 
 
 func _on_unit_detection_zone_body_exited(body):
