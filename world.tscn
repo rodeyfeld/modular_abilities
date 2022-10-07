@@ -15,4 +15,4 @@ collision_mask = 1
 position = Vector2(725, -170)
 
 [node name="Enemy2" parent="." instance=ExtResource("2_45aac")]
-position = Vector2(-637, 594)
+position = Vector2(731, 152)
