@@ -1,13 +1,12 @@
-[gd_resource type="Resource" load_steps=15 format=3 uid="uid://br7vuop0txytw"]
+[gd_resource type="Resource" load_steps=12 format=3 uid="uid://dopopmbyb5u3d"]
 
 [ext_resource type="Script" path="res://ability/ability_data.gd" id="1_01ku4"]
 [ext_resource type="Script" path="res://ability/ability_action_data.gd" id="1_7w4fg"]
 [ext_resource type="Script" path="res://ability/data_driven_ability.gd" id="1_s4i4v"]
 [ext_resource type="Script" path="res://ability/fields/int_field.gd" id="2_pqvws"]
 [ext_resource type="Script" path="res://ability/ability_event_data.gd" id="3_ik8vp"]
-[ext_resource type="Resource" uid="uid://dopopmbyb5u3d" path="res://ability/fyreball2.tres" id="5_b1q5l"]
 
-[sub_resource type="Resource" id="Resource_68an5"]
+[sub_resource type="Resource" id="Resource_ljovd"]
 script = ExtResource("1_01ku4")
 target_flags = 0
 behavior_flags = 1
@@ -16,25 +15,19 @@ description = null
 cooldown = null
 num_repeat = 1
 
-[sub_resource type="Resource" id="Resource_l6h7x"]
-script = ExtResource("2_pqvws")
-name = "speed"
-value = 200
-to_be_removed = null
-
-[sub_resource type="Resource" id="Resource_f0vtw"]
+[sub_resource type="Resource" id="Resource_d3t3d"]
 script = ExtResource("1_7w4fg")
-int_fields = [SubResource("Resource_l6h7x")]
+int_fields = null
 float_fields = null
 trigger_abilities = null
 action_type = 2
 target = 3
 to_be_removed = null
 
-[sub_resource type="Resource" id="Resource_5psw7"]
+[sub_resource type="Resource" id="Resource_gnej6"]
 script = ExtResource("3_ik8vp")
 event_type = 1
-actions = [SubResource("Resource_f0vtw")]
+actions = [SubResource("Resource_d3t3d")]
 modifiers = null
 
 [sub_resource type="Resource" id="Resource_dxv2j"]
@@ -52,23 +45,14 @@ action_type = 1
 target = 2
 to_be_removed = null
 
-[sub_resource type="Resource" id="Resource_57y33"]
-script = ExtResource("1_7w4fg")
-int_fields = null
-float_fields = null
-trigger_abilities = [ExtResource("5_b1q5l")]
-action_type = 3
-target = 0
-to_be_removed = null
-
-[sub_resource type="Resource" id="Resource_i4m3n"]
+[sub_resource type="Resource" id="Resource_jqwch"]
 script = ExtResource("3_ik8vp")
 event_type = 3
-actions = [SubResource("Resource_tq4nj"), SubResource("Resource_57y33")]
+actions = [SubResource("Resource_tq4nj")]
 modifiers = null
 
 [resource]
 script = ExtResource("1_s4i4v")
-ability_data = SubResource("Resource_68an5")
-ability_event_data = [SubResource("Resource_5psw7"), SubResource("Resource_i4m3n")]
+ability_data = SubResource("Resource_ljovd")
+ability_event_data = [SubResource("Resource_gnej6"), SubResource("Resource_jqwch")]
 test_ = null

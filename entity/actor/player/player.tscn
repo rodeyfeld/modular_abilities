@@ -17,15 +17,11 @@ script = ExtResource("2_53o15")
 current = true
 zoom = Vector2(0.25, 0.25)
 
-[node name="UnitDetectionZone" parent="." index="2"]
-collision_layer = 0
-
 [node name="CollisionShape2d" parent="UnitDetectionZone" index="0"]
 shape = SubResource("CircleShape2D_drggo")
 
 [node name="Hurtbox" parent="." index="3"]
 collision_layer = 4
-collision_mask = 0
 
 [node name="CollisionShape2d" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_8y6xy")

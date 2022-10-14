@@ -16,6 +16,7 @@ func parse(raw_ability:DataDrivenAbility) -> Ability:
 	for ability_event in raw_ability.ability_event_data:
 		for action in ability_event.actions:
 			var action_script = load(DataDrivenAbilitySingleton.action_type_map[action.action_type])
+			print(str(action_script))
 			var base_action:BaseAction = action_script.new()
 			base_action.setup(action)
 			ability.event_register[ability_event.event_type].append(base_action)

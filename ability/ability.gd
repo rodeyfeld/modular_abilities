@@ -1,14 +1,7 @@
 extends Node2D
 
 class_name Ability
-#
-#const ON_ABILITY_START:String = "ON_ABILITY_START"
-#const ON_SPELL_START:String = "ON_SPELL_START"
-#const ON_CHANNEL_INTERRUPTED:String = "ON_CHANNEL_INTERRUPTED"
-#const ON_CHANNEL_SUCCEED:String = "ON_CHANNEL_SUCCEED"
-#const ON_PROJECTILE_HIT_UNIT:String = "ON_PROJECTILE_HIT_UNIT"
-#const ON_TARGET_DIED:String = "ON_TARGET_DIED"
-#const ON_UPGRADE:String = "ON_UPGRADE"
+
 @onready var cooldown_timer = $CooldownTimer
 
 var ability_data:AbilityData
@@ -73,8 +66,9 @@ func on_projectile_hit(target:Actor):
 	if event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT] != []:
 		for action in event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT]:
 			await action.execute(self, target, target.position)
-		if ability_data.num_repeat > 0:
-		#	ability.execute(self, {'target_unit':self, 'target_position': get_global_mouse_position()})
-			var new_target_position:Vector2 = target.nearby_targetable_units.pop_front().global_position
-			await execute(target, {'target_unit':target, 'target_position': new_target_position})
-			ability_data.num_repeat -= 1
+	
+#		if ability_data.num_repeat > 0:
+#			ability.execute(self, {'target_unit':self, 'target_position': get_global_mouse_position()})
+#			var new_target_position:Vector2 = target.nearby_targetable_units.pop_front().global_position
+#			await execute(target, {'target_unit':target, 'target_position': new_target_position})
+#			ability_data.num_repeat -= 1

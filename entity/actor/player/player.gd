@@ -6,7 +6,9 @@ class_name Player
 
 var fyreball = preload("res://ability/fyreball.tres")
 var data_driven_ability_script = load("res://ability/data_driven_ability.gd")
+
 var ability:Ability
+
 
 func _ready():
 	title = "player"
