@@ -10,6 +10,7 @@ enum event_types {
 enum action_types {
 	NONE,
 	DAMAGE,
+	HEAL,
 	LINEAR_PROJECTILE,
 	AUXILIARY,
 }
@@ -18,7 +19,6 @@ enum target_flag {
 		NONE = 1 << 0,
 		SELF = 1 << 1,
 		ENEMY = 1 << 2,
-		GROUND = 1 << 3,
 }
 
 enum target {
@@ -28,8 +28,9 @@ enum target {
 		POINT,
 }
 
+# https://developer.valvesoftware.com/wiki/Dota_2_Workshop_Tools/Scripting/Abilities_Data_Driven
 enum behavior_flag {
-		TEST = 1 << 0, #Can be owned by a unit but can't be cast and won't show up on the HUD.
+		TEST = 1 << 0, # Test value
 		PASSIVE = 1 << 1, #Cannot be cast like above but this one shows up on the ability HUD.
 		NO_TARGET = 1 << 2, #Doesn't need a target to be cast, ability fires off as soon as the button is pressed.
 		UNIT_TARGET = 1 << 3, #Needs a target to be cast on.
@@ -45,9 +46,11 @@ enum behavior_flag {
 		DONT_CANCEL_MOVEMENT = 1 << 13, #Doesn't cause certain modifiers to end, used for courier and speed burst.
 }
 
+# TODO: Refactor this to point to class names or a more complex mapping table
 var action_type_map = {
 	action_types.DAMAGE: "res://ability/action/damage.gd",
 	action_types.LINEAR_PROJECTILE: "res://ability/action/linear_projectile.gd",
-	action_types.AUXILIARY: "res://ability/action/auxiliary.gd"
+	action_types.AUXILIARY: "res://ability/action/auxiliary.gd",
+	action_types.HEAL: "res://ability/action/heal.gd",
 	
 }

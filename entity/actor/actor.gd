@@ -2,6 +2,8 @@ extends Entity
 
 class_name Actor
 
+# Class for containing all entities that can be interacted with and interact
+
 var health:int
 var title:String
 
@@ -10,13 +12,17 @@ var ability_offensive_attach_point_distance:float = 100.0
 
 
 func update_health(amount, _title):
-	print(health)
+	# Any time this function called, it will update the health and provide 
+	# a title for what caused it
+	print("HEALTH_BEFORE: ", health)
 	health += amount
-	print(health)
+	print("HEALTH_AFTER: ", health)
 	
 func _on_unit_detection_zone_body_entered(body):
+	# Collect nearby targetable actors
 	if self.get_instance_id() != body.get_instance_id():
 		nearby_targetable_units.append(body)
 
 func _on_unit_detection_zone_body_exited(body):
+	# Remove actor if they have left the targets radius
 	nearby_targetable_units.erase(body)

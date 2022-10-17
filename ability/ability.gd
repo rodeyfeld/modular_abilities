@@ -21,7 +21,10 @@ var channelled:bool = false:
 
 
 func setup(data:AbilityData):
+	# On setup, set all event registers to blank, they will be filled in by the
+	# DataDrivenAbility
 	ability_data = data
+	# Targeting params for unit vs position coordinates
 	targets = {
 		'target_unit': null,
 		'target_position': null
@@ -31,6 +34,9 @@ func setup(data:AbilityData):
 	event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT] = []
 	
 func execute(caster_param:Actor, target_dict_param:Dictionary):
+	# This is called on ability cast. The caster_param is updated to the current
+	# caster, and the target_dict_param is passed a unit and position. These
+	# will be used based on the action's targeting enum
 	caster = caster_param
 	targets = target_dict_param
 	is_running = true
@@ -38,17 +44,24 @@ func execute(caster_param:Actor, target_dict_param:Dictionary):
 	target_unit = target_dict_param['target_unit']
 	target_position = target_dict_param['target_position']
 	
+	# First we check for ON_ABILITY_START action events. These will be 
+	# events that should happen regardless of interruptions, such as mana costs
+	# and triggering global cooldowns
 	if event_register[DataDrivenAbilitySingleton.event_types.ON_ABILITY_START] != []:
 		print("RUNNING event_types.ON_ABILITY_START")
 		perform_actions(event_register[DataDrivenAbilitySingleton.event_types.ON_ABILITY_START])
+	# If it is a channelled spell, perform actions related to movement reduction
+	# and locking out other spells
 	if channelled:
 		pass
+	# Otherwise, proceed to events contained in ON_SPELL_START
 	else:
 		await on_spell_start()
 		
 func perform_actions(actions:Array):
-	# TODO: May need to make awaits signal based
+	# For every action in this register, execute the action based on its targeting
 	for action in actions:
+		# TODO: Recieve a signal from the actions and call further processing
 		if action.data.target == DataDrivenAbilitySingleton.target.CASTER:
 			await action.execute(self, caster, target_position)
 		elif action.data.target == DataDrivenAbilitySingleton.target.POINT:
@@ -56,19 +69,18 @@ func perform_actions(actions:Array):
 		elif action.data.target == DataDrivenAbilitySingleton.target.TARGET:
 			await action.execute(self, targets[0], target_position)
 
+# EVENT REGISTER: ON_SPELL_START
 func on_spell_start():
+	# Start the cooldown for this ability
 	cooldown_timer.start()
 	is_cast = true
-#	targets.append(target_unit)
+	# Execute all actions in this event register
 	await perform_actions(event_register[DataDrivenAbilitySingleton.event_types.ON_SPELL_START])
-		
+
+# EVENT REGISTER: ON_PROJECTILE_HIT
 func on_projectile_hit(target:Actor):
 	if event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT] != []:
 		for action in event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT]:
+			# TODO: Configure targets or pass this to perform_actions()
 			await action.execute(self, target, target.position)
 	
-#		if ability_data.num_repeat > 0:
-#			ability.execute(self, {'target_unit':self, 'target_position': get_global_mouse_position()})
-#			var new_target_position:Vector2 = target.nearby_targetable_units.pop_front().global_position
-#			await execute(target, {'target_unit':target, 'target_position': new_target_position})
-#			ability_data.num_repeat -= 1

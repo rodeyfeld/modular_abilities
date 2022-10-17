@@ -1,74 +1,64 @@
-[gd_resource type="Resource" load_steps=15 format=3 uid="uid://br7vuop0txytw"]
+[gd_resource type="Resource" load_steps=13 format=3 uid="uid://dlwopm7cr5c2f"]
 
 [ext_resource type="Script" path="res://ability/ability_data.gd" id="1_01ku4"]
 [ext_resource type="Script" path="res://ability/ability_action_data.gd" id="1_7w4fg"]
 [ext_resource type="Script" path="res://ability/data_driven_ability.gd" id="1_s4i4v"]
 [ext_resource type="Script" path="res://ability/fields/int_field.gd" id="2_pqvws"]
 [ext_resource type="Script" path="res://ability/ability_event_data.gd" id="3_ik8vp"]
-[ext_resource type="Resource" uid="uid://dopopmbyb5u3d" path="res://ability/fyreball2.tres" id="5_b1q5l"]
 
-[sub_resource type="Resource" id="Resource_68an5"]
+[sub_resource type="Resource" id="Resource_2sr5r"]
 script = ExtResource("1_01ku4")
-target_flags = 0
+target_flags = 3
 behavior_flags = 1
-name = null
-description = null
+name = "fyre"
+description = "ball of fire with damage"
 cooldown = null
-num_repeat = 1
+num_repeat = null
 
-[sub_resource type="Resource" id="Resource_l6h7x"]
+[sub_resource type="Resource" id="Resource_mttwc"]
 script = ExtResource("2_pqvws")
 name = "speed"
-value = 200
+value = 100
 to_be_removed = null
 
-[sub_resource type="Resource" id="Resource_f0vtw"]
+[sub_resource type="Resource" id="Resource_cf4s8"]
 script = ExtResource("1_7w4fg")
-int_fields = [SubResource("Resource_l6h7x")]
+int_fields = [SubResource("Resource_mttwc")]
 float_fields = null
 trigger_abilities = null
-action_type = 2
+action_type = 3
 target = 3
 to_be_removed = null
 
-[sub_resource type="Resource" id="Resource_5psw7"]
+[sub_resource type="Resource" id="Resource_871dn"]
 script = ExtResource("3_ik8vp")
 event_type = 1
-actions = [SubResource("Resource_f0vtw")]
+actions = [SubResource("Resource_cf4s8")]
 modifiers = null
 
-[sub_resource type="Resource" id="Resource_dxv2j"]
+[sub_resource type="Resource" id="Resource_jsscr"]
 script = ExtResource("2_pqvws")
 name = "amount"
-value = 2
+value = 10
 to_be_removed = null
 
-[sub_resource type="Resource" id="Resource_tq4nj"]
+[sub_resource type="Resource" id="Resource_euo2c"]
 script = ExtResource("1_7w4fg")
-int_fields = [SubResource("Resource_dxv2j")]
+int_fields = [SubResource("Resource_jsscr")]
 float_fields = null
 trigger_abilities = null
 action_type = 1
 target = 2
 to_be_removed = null
 
-[sub_resource type="Resource" id="Resource_57y33"]
-script = ExtResource("1_7w4fg")
-int_fields = null
-float_fields = null
-trigger_abilities = [ExtResource("5_b1q5l")]
-action_type = 3
-target = 0
-to_be_removed = null
-
-[sub_resource type="Resource" id="Resource_i4m3n"]
+[sub_resource type="Resource" id="Resource_jljgk"]
 script = ExtResource("3_ik8vp")
 event_type = 3
-actions = [SubResource("Resource_tq4nj"), SubResource("Resource_57y33")]
+actions = [SubResource("Resource_euo2c")]
 modifiers = null
 
 [resource]
 script = ExtResource("1_s4i4v")
-ability_data = SubResource("Resource_68an5")
-ability_event_data = [SubResource("Resource_5psw7"), SubResource("Resource_i4m3n")]
-test_ = null
+ability_data = SubResource("Resource_2sr5r")
+ability_event_data = [SubResource("Resource_871dn"), SubResource("Resource_jljgk")]
+test_val = null

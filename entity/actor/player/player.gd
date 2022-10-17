@@ -19,7 +19,8 @@ func _ready():
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		ability.execute(self, {'target_unit':self, 'target_position': get_global_mouse_position()})
-
+	
+	# Configure deadzone for mouse
 	var angle = self.get_angle_to(get_global_mouse_position())
 	var distance = 100
 	ability_offensive_attach_point.global_position.x = distance * cos(angle) + self.position.x
