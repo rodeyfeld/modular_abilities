@@ -26,6 +26,7 @@ enum target {
 		CASTER,
 		TARGET,
 		POINT,
+		NEAREST_ENEMY,
 }
 
 # https://developer.valvesoftware.com/wiki/Dota_2_Workshop_Tools/Scripting/Abilities_Data_Driven

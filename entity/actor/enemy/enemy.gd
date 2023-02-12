@@ -9,5 +9,4 @@ func _ready():
 #	print(nearby_targetable_units)
 
 func _on_hurtbox_area_entered(area):
-	var test = area.owner
 	emit_signal("projectile_hit", area.owner)

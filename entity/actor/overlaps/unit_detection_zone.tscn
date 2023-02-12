@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dx13xyiniobo6"]
 
 [node name="UnitDetectionZone" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]

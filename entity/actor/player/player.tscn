@@ -14,7 +14,6 @@ collision_layer = 1
 script = ExtResource("2_53o15")
 
 [node name="Camera2d" type="Camera2D" parent="." index="0"]
-current = true
 zoom = Vector2(0.25, 0.25)
 
 [node name="CollisionShape2d" parent="UnitDetectionZone" index="0"]

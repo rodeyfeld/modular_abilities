@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=13 format=3 uid="uid://dlwopm7cr5c2f"]
+[gd_resource type="Resource" script_class="DataDrivenAbility" load_steps=22 format=3 uid="uid://dlwopm7cr5c2f"]
 
 [ext_resource type="Script" path="res://ability/ability_data.gd" id="1_01ku4"]
 [ext_resource type="Script" path="res://ability/ability_action_data.gd" id="1_7w4fg"]
@@ -23,7 +23,7 @@ to_be_removed = null
 
 [sub_resource type="Resource" id="Resource_cf4s8"]
 script = ExtResource("1_7w4fg")
-int_fields = [SubResource("Resource_mttwc")]
+int_fields = Array[ExtResource("2_pqvws")]([SubResource("Resource_mttwc")])
 float_fields = null
 trigger_abilities = null
 action_type = 3
@@ -33,7 +33,7 @@ to_be_removed = null
 [sub_resource type="Resource" id="Resource_871dn"]
 script = ExtResource("3_ik8vp")
 event_type = 1
-actions = [SubResource("Resource_cf4s8")]
+actions = Array[ExtResource("1_7w4fg")]([SubResource("Resource_cf4s8")])
 modifiers = null
 
 [sub_resource type="Resource" id="Resource_jsscr"]
@@ -44,21 +44,87 @@ to_be_removed = null
 
 [sub_resource type="Resource" id="Resource_euo2c"]
 script = ExtResource("1_7w4fg")
-int_fields = [SubResource("Resource_jsscr")]
+int_fields = Array[ExtResource("2_pqvws")]([SubResource("Resource_jsscr")])
 float_fields = null
-trigger_abilities = null
+trigger_abilities = Array[ExtResource("1_s4i4v")]([])
 action_type = 1
 target = 2
 to_be_removed = null
 
+[sub_resource type="Resource" id="Resource_pmegv"]
+script = ExtResource("1_01ku4")
+target_flags = 4
+behavior_flags = 1
+name = ""
+description = ""
+cooldown = 0.0
+num_repeat = 0
+
+[sub_resource type="Resource" id="Resource_4iy07"]
+script = ExtResource("2_pqvws")
+name = "speed"
+value = 100
+to_be_removed = false
+
+[sub_resource type="Resource" id="Resource_18st8"]
+script = ExtResource("1_7w4fg")
+int_fields = Array[ExtResource("2_pqvws")]([SubResource("Resource_4iy07")])
+float_fields = Array[Resource("res://ability/fields/float_field.gd")]([])
+trigger_abilities = Array[ExtResource("1_s4i4v")]([])
+action_type = 3
+target = 4
+to_be_removed = false
+
+[sub_resource type="Resource" id="Resource_m8bhs"]
+script = ExtResource("3_ik8vp")
+event_type = 2
+actions = Array[ExtResource("1_7w4fg")]([SubResource("Resource_18st8")])
+modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
+
+[sub_resource type="Resource" id="Resource_orfa3"]
+script = ExtResource("2_pqvws")
+name = "amount"
+value = 10
+to_be_removed = false
+
+[sub_resource type="Resource" id="Resource_fuixl"]
+script = ExtResource("1_7w4fg")
+int_fields = Array[ExtResource("2_pqvws")]([SubResource("Resource_orfa3")])
+float_fields = Array[Resource("res://ability/fields/float_field.gd")]([])
+trigger_abilities = Array[ExtResource("1_s4i4v")]([])
+action_type = 1
+target = 2
+to_be_removed = false
+
+[sub_resource type="Resource" id="Resource_spgnb"]
+script = ExtResource("3_ik8vp")
+event_type = 3
+actions = Array[ExtResource("1_7w4fg")]([SubResource("Resource_fuixl")])
+modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
+
+[sub_resource type="Resource" id="Resource_hbi3m"]
+script = ExtResource("1_s4i4v")
+ability_data = SubResource("Resource_pmegv")
+ability_event_data = Array[ExtResource("3_ik8vp")]([SubResource("Resource_m8bhs"), SubResource("Resource_spgnb")])
+test_val = 0
+
+[sub_resource type="Resource" id="Resource_dmndh"]
+script = ExtResource("1_7w4fg")
+int_fields = Array[ExtResource("2_pqvws")]([])
+float_fields = Array[Resource("res://ability/fields/float_field.gd")]([])
+trigger_abilities = Array[ExtResource("1_s4i4v")]([SubResource("Resource_hbi3m")])
+action_type = 4
+target = 2
+to_be_removed = false
+
 [sub_resource type="Resource" id="Resource_jljgk"]
 script = ExtResource("3_ik8vp")
 event_type = 3
-actions = [SubResource("Resource_euo2c")]
+actions = Array[ExtResource("1_7w4fg")]([SubResource("Resource_euo2c"), SubResource("Resource_dmndh")])
 modifiers = null
 
 [resource]
 script = ExtResource("1_s4i4v")
 ability_data = SubResource("Resource_2sr5r")
-ability_event_data = [SubResource("Resource_871dn"), SubResource("Resource_jljgk")]
+ability_event_data = Array[ExtResource("3_ik8vp")]([SubResource("Resource_871dn"), SubResource("Resource_jljgk")])
 test_val = null

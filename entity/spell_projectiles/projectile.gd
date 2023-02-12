@@ -7,15 +7,19 @@ class_name Projectile
 
 signal projectile_hit
 
-func _physics_process(delta):
+var projectile_owner:Actor
+
+func _physics_process(_delta):
 	move_and_slide()
 
-func fire():
+func fire(owner):
+	projectile_owner = owner
 	velocity = initial_direction.normalized() * initial_speed
 
 func on_hit():
 	pass
 
 func _on_hitbox_area_entered(area):
-	var test = area.owner
-	emit_signal("projectile_hit", area.owner)
+	if area.get_parent() != projectile_owner:
+		emit_signal("projectile_hit", area.owner)
+		self.queue_free()

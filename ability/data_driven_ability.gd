@@ -10,7 +10,6 @@ const ability_scene = preload("res://ability/ability.tscn")
 
 @export var ability_data:AbilityData
 @export var ability_event_data:Array[AbilityEventData]
-@export var test_val:int
 
 
 func parse(raw_ability:DataDrivenAbility) -> Ability:
@@ -18,7 +17,7 @@ func parse(raw_ability:DataDrivenAbility) -> Ability:
 	var ability:Ability = ability_scene.instantiate()
 	# Setup basic ability data 
 	ability.setup(raw_ability.ability_data)
-	
+	print(ability.get_instance_id())
 	# For every event in our data driven ability, we want its actions to be added
 	# to the register for that ability. These will be cycled through on ability
 	# cast by an actor

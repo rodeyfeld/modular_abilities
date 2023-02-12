@@ -5,14 +5,14 @@ class_name Ability
 @onready var cooldown_timer = $CooldownTimer
 
 var ability_data:AbilityData
-var caster:Entity
+var caster:Actor
 var targets:Dictionary
 var event_register:Dictionary = {}
 var is_running:bool
 var is_cast:bool
 var cast_point:Vector2
 var target_position:Vector2
-var target_unit:Entity
+var target_unit:Actor
 var channelled:bool = false:
 	get:
 		return (ability_data.behavior_flags & DataDrivenAbilitySingleton.behavior_flag.CHANNELLED) != 0
@@ -56,18 +56,20 @@ func execute(caster_param:Actor, target_dict_param:Dictionary):
 		pass
 	# Otherwise, proceed to events contained in ON_SPELL_START
 	else:
-		await on_spell_start()
+		on_spell_start()
 		
 func perform_actions(actions:Array):
 	# For every action in this register, execute the action based on its targeting
 	for action in actions:
 		# TODO: Recieve a signal from the actions and call further processing
 		if action.data.target == DataDrivenAbilitySingleton.target.CASTER:
-			await action.execute(self, caster, target_position)
+			action.execute(self, caster, target_position)
 		elif action.data.target == DataDrivenAbilitySingleton.target.POINT:
-			await action.execute(self, null, target_position)
+			action.execute(self, null, target_position)
 		elif action.data.target == DataDrivenAbilitySingleton.target.TARGET:
-			await action.execute(self, targets[0], target_position)
+			action.execute(self, target_unit, target_position)
+		elif action.data.target == DataDrivenAbilitySingleton.target.NEAREST_ENEMY:
+			action.execute(self, target_unit.get_nearby_targets()[0], target_unit.get_nearby_targets()[0].position)
 
 # EVENT REGISTER: ON_SPELL_START
 func on_spell_start():
@@ -75,12 +77,12 @@ func on_spell_start():
 	cooldown_timer.start()
 	is_cast = true
 	# Execute all actions in this event register
-	await perform_actions(event_register[DataDrivenAbilitySingleton.event_types.ON_SPELL_START])
+	perform_actions(event_register[DataDrivenAbilitySingleton.event_types.ON_SPELL_START])
 
 # EVENT REGISTER: ON_PROJECTILE_HIT
 func on_projectile_hit(target:Actor):
 	if event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT] != []:
 		for action in event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT]:
 			# TODO: Configure targets or pass this to perform_actions()
-			await action.execute(self, target, target.position)
+			action.execute(self, target, target.position)
 	
