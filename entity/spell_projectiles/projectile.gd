@@ -12,8 +12,8 @@ var projectile_owner:Actor
 func _physics_process(_delta):
 	move_and_slide()
 
-func fire(owner):
-	projectile_owner = owner
+func fire(p_owner):
+	projectile_owner = p_owner
 	velocity = initial_direction.normalized() * initial_speed
 
 func on_hit():

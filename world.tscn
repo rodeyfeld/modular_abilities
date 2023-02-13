@@ -4,13 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://s4ks1eno3d5d" path="res://entity/actor/enemy/enemy.tscn" id="2_45aac"]
 
 [node name="World" type="Node2D"]
-scale = Vector2(0.995769, 1)
 
 [node name="ProjectileContainer" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_ypvuq")]
 position = Vector2(44, -164)
 collision_mask = 1
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="Enemy" parent="." instance=ExtResource("2_45aac")]
 position = Vector2(725, -170)

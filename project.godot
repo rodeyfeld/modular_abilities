@@ -19,6 +19,20 @@ config/icon="res://icon.svg"
 
 DataDrivenAbilitySingleton="*res://ability/data_driven_ability_singleton.gd"
 
+[display]
+
+window/size/initial_position_type=0
+window/size/resizable=false
+window/stretch/mode="viewport"
+
+[input]
+
+test1={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"echo":false,"script":null)
+]
+}
+
 [layer_names]
 
 2d_physics/layer_1="player"

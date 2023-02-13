@@ -9,5 +9,11 @@ script = ExtResource("1_im1gy")
 [node name="AbilityOffensiveAttachPoint" type="Marker2D" parent="."]
 
 [node name="Sprite2d" type="Sprite2D" parent="AbilityOffensiveAttachPoint"]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_v0ee5")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 35.0
+offset_top = -10.0
+offset_right = 75.0
+offset_bottom = 13.0

@@ -60,19 +60,21 @@ func execute(caster_param:Actor, target_dict_param:Dictionary):
 func perform_actions(event_type:DataDrivenAbilitySingleton.event_types):
 	# Takes an event_type enum. This is used to get the arrry of AbilityEventData 
 	var actions = event_register[event_type]
-	var events = event_register[event_type]
 	print("ACTIONS: ", actions)
 	
 	# For every action in this register, execute the action based on its targeting
 	for action in actions:
+		var action_execution_num_timer:Timer = Timer.new()
+		action.action_execution_num_timer = action_execution_num_timer
+		add_child(action_execution_num_timer)
 		# TODO: Recieve a signal from the actions and call further processing
-		if action.data.target == DataDrivenAbilitySingleton.target.CASTER:
+		if action.data.target_type == DataDrivenAbilitySingleton.target_type.CASTER:
 			action.execute(self, caster, target_position)
-		elif action.data.target == DataDrivenAbilitySingleton.target.POINT:
+		elif action.data.target_type == DataDrivenAbilitySingleton.target_type.POINT:
 			action.execute_all(self, null, target_position)
-		elif action.data.target == DataDrivenAbilitySingleton.target.TARGET:
+		elif action.data.target_type == DataDrivenAbilitySingleton.target_type.TARGET:
 			action.execute(self, target_unit, target_position)
-		elif action.data.target == DataDrivenAbilitySingleton.target.NEAREST_ENEMY:
+		elif action.data.target_type == DataDrivenAbilitySingleton.target_type.NEAREST_ENEMY:
 			if len(target_unit.get_nearby_targets()) > 0:
 				action.execute(self, target_unit.get_nearby_targets()[0], target_unit.get_nearby_targets()[0].position)
 		

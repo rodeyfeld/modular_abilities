@@ -5,6 +5,12 @@ enum attribute_field_type {
 	SPEED
 }
 
+enum attribute_field_fire_mode_type {
+	LINEAR,
+	NOVA,
+	CONE,
+}
+
 enum event_types {
 	NONE,
 	ON_SPELL_START,
@@ -12,7 +18,7 @@ enum event_types {
 	ON_PROJECTILE_HIT,
 }
 
-enum action_types {
+enum action_type {
 	NONE,
 	DAMAGE,
 	HEAL,
@@ -20,19 +26,18 @@ enum action_types {
 	AUXILIARY,
 }
 
-enum mask_flag {
+enum mask_flag_type {
 		NONE = 1 << 0,
 		SELF = 1 << 1,
 		ENEMY = 1 << 2,
 }
 
-enum target {
+enum target_type {
 		NONE,
 		CASTER,
 		TARGET,
 		POINT,
 		NEAREST_ENEMY,
-		NOVA,
 }
 
 # https://developer.valvesoftware.com/wiki/Dota_2_Workshop_Tools/Scripting/Abilities_Data_Driven
@@ -55,9 +60,9 @@ enum behavior_flag {
 
 # TODO: Refactor this to point to class names or a more complex mapping table
 var action_type_map = {
-	action_types.DAMAGE: "res://ability/action/damage.gd",
-	action_types.LINEAR_PROJECTILE: "res://ability/action/linear_projectile.gd",
-	action_types.AUXILIARY: "res://ability/action/auxiliary.gd",
-	action_types.HEAL: "res://ability/action/heal.gd",
+	action_type.DAMAGE: "res://ability/action/damage.gd",
+	action_type.LINEAR_PROJECTILE: "res://ability/action/linear_projectile.gd",
+	action_type.AUXILIARY: "res://ability/action/auxiliary.gd",
+	action_type.HEAL: "res://ability/action/heal.gd",
 	
 }

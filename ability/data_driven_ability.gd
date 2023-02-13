@@ -6,7 +6,7 @@ class_name DataDrivenAbility
 
 
 const ability_scene = preload("res://ability/ability.tscn")
-
+const base_action_scene = preload("res://ability/action/base_action.tscn")
 
 @export var ability_data:AbilityData
 @export var ability_event_data:Array[AbilityEventData]
@@ -21,12 +21,12 @@ func parse(raw_ability:DataDrivenAbility) -> Ability:
 	# to the register for that ability. These will be cycled through on ability
 	# cast by an actor
 	for ability_event in raw_ability.ability_event_data:
-		print(ability_event.repeat_event_num)
 		for action in ability_event.actions:
 			# We check the file required for this type of ability, and load the 
 			# relevant script for this action from DataDrivenAbilitySingleton.action_type_map
 			var action_script = load(DataDrivenAbilitySingleton.action_type_map[action.action_type])
-			var base_action:BaseAction = action_script.new()
+			var base_action:BaseAction = base_action_scene.instantiate()
+			base_action.set_script(action_script)
 			# Configure the new action based on the fields from DataDrivenAbility
 			base_action.setup(action)
 			# Register the action to the abilities event register
