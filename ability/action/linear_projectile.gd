@@ -15,7 +15,7 @@ func setup(data_param:AbilityActionData):
 # and handle its logic there. 
 func execute(caster_ability:Ability, target:Actor, target_position:Vector2):
 	# Get the position for this offensive ability
-		
+	
 	var attach_node:Node2D = caster_ability.caster.get_node("AttachPoint/AbilityOffensiveAttachPoint")
 	var attach_global_position:Vector2 = attach_node.global_position
 	

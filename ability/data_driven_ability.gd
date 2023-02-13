@@ -17,11 +17,11 @@ func parse(raw_ability:DataDrivenAbility) -> Ability:
 	var ability:Ability = ability_scene.instantiate()
 	# Setup basic ability data 
 	ability.setup(raw_ability.ability_data)
-	print(ability.get_instance_id())
 	# For every event in our data driven ability, we want its actions to be added
 	# to the register for that ability. These will be cycled through on ability
 	# cast by an actor
 	for ability_event in raw_ability.ability_event_data:
+		print(ability_event.repeat_event_num)
 		for action in ability_event.actions:
 			# We check the file required for this type of ability, and load the 
 			# relevant script for this action from DataDrivenAbilitySingleton.action_type_map

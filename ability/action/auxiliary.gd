@@ -16,6 +16,7 @@ func setup(data_param:AbilityActionData):
 
 func execute(caster_ability:Ability, target:Actor, _target_point:Vector2):
 	# Add the ability to the caster's tree
+	# The target is the caster of the ability
 	var caster = target
 	var data_driven_ability = data_driven_ability_script.new()
 	ability = data_driven_ability.parse(self.data.trigger_abilities[0])

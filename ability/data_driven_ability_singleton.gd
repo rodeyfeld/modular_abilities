@@ -20,7 +20,7 @@ enum action_types {
 	AUXILIARY,
 }
 
-enum target_flag {
+enum mask_flag {
 		NONE = 1 << 0,
 		SELF = 1 << 1,
 		ENEMY = 1 << 2,
@@ -32,6 +32,7 @@ enum target {
 		TARGET,
 		POINT,
 		NEAREST_ENEMY,
+		NOVA,
 }
 
 # https://developer.valvesoftware.com/wiki/Dota_2_Workshop_Tools/Scripting/Abilities_Data_Driven

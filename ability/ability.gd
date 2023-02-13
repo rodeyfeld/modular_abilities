@@ -7,7 +7,7 @@ class_name Ability
 var ability_data:AbilityData
 var caster:Actor
 var targets:Dictionary
-var event_register:Dictionary = {}
+var event_register: Dictionary = {}
 var is_running:bool
 var is_cast:bool
 var cast_point:Vector2
@@ -48,8 +48,7 @@ func execute(caster_param:Actor, target_dict_param:Dictionary):
 	# events that should happen regardless of interruptions, such as mana costs
 	# and triggering global cooldowns
 	if event_register[DataDrivenAbilitySingleton.event_types.ON_ABILITY_START] != []:
-		print("RUNNING event_types.ON_ABILITY_START")
-		perform_actions(event_register[DataDrivenAbilitySingleton.event_types.ON_ABILITY_START])
+		perform_actions(DataDrivenAbilitySingleton.event_types.ON_ABILITY_START)
 	# If it is a channelled spell, perform actions related to movement reduction
 	# and locking out other spells
 	if channelled:
@@ -58,32 +57,37 @@ func execute(caster_param:Actor, target_dict_param:Dictionary):
 	else:
 		on_spell_start()
 
-func perform_actions(actions:Array):
+func perform_actions(event_type:DataDrivenAbilitySingleton.event_types):
+	# Takes an event_type enum. This is used to get the arrry of AbilityEventData 
+	var actions = event_register[event_type]
+	var events = event_register[event_type]
+	print("ACTIONS: ", actions)
+	
 	# For every action in this register, execute the action based on its targeting
 	for action in actions:
 		# TODO: Recieve a signal from the actions and call further processing
 		if action.data.target == DataDrivenAbilitySingleton.target.CASTER:
 			action.execute(self, caster, target_position)
 		elif action.data.target == DataDrivenAbilitySingleton.target.POINT:
-			action.execute(self, null, target_position)
+			action.execute_all(self, null, target_position)
 		elif action.data.target == DataDrivenAbilitySingleton.target.TARGET:
 			action.execute(self, target_unit, target_position)
 		elif action.data.target == DataDrivenAbilitySingleton.target.NEAREST_ENEMY:
 			if len(target_unit.get_nearby_targets()) > 0:
 				action.execute(self, target_unit.get_nearby_targets()[0], target_unit.get_nearby_targets()[0].position)
-
+		
 # EVENT REGISTER: ON_SPELL_START
 func on_spell_start():
 	# Start the cooldown for this ability
 	cooldown_timer.start()
 	is_cast = true
 	# Execute all actions in this event register
-	perform_actions(event_register[DataDrivenAbilitySingleton.event_types.ON_SPELL_START])
+	perform_actions(DataDrivenAbilitySingleton.event_types.ON_SPELL_START)
 
 # EVENT REGISTER: ON_PROJECTILE_HIT
 func on_projectile_hit(target:Actor):
+	target_unit = target
+	target_position = target.global_position
 	if event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT] != []:
-		for action in event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT]:
-			# TODO: Configure targets or pass this to perform_actions()
-			action.execute(self, target, target.position)
+		perform_actions(DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT)
 	

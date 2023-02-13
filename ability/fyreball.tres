@@ -1,118 +1,136 @@
 [gd_resource type="Resource" script_class="DataDrivenAbility" load_steps=22 format=3 uid="uid://dlwopm7cr5c2f"]
 
 [ext_resource type="Script" path="res://ability/ability_data.gd" id="1_01ku4"]
-[ext_resource type="Script" path="res://ability/ability_action_data.gd" id="1_7w4fg"]
 [ext_resource type="Script" path="res://ability/data_driven_ability.gd" id="1_s4i4v"]
-[ext_resource type="Script" path="res://ability/ability_event_data.gd" id="3_ik8vp"]
-[ext_resource type="Script" path="res://ability/fields/attribute_dictionary.gd" id="5_up4wf"]
+[ext_resource type="Script" path="res://ability/fields/attribute_dictionary.gd" id="2_meivv"]
+[ext_resource type="Script" path="res://ability/ability_action_data.gd" id="3_3tvx4"]
+[ext_resource type="Script" path="res://ability/ability_event_data.gd" id="4_k5cua"]
 
 [sub_resource type="Resource" id="Resource_2sr5r"]
 script = ExtResource("1_01ku4")
-target_flags = 3
+mask_flag = 1
 behavior_flags = 1
 name = "fyre"
 description = "ball of fire with damage"
-cooldown = null
-num_repeat = null
+cooldown = 0.0
 
-[sub_resource type="Resource" id="Resource_dxons"]
-script = ExtResource("5_up4wf")
+[sub_resource type="Resource" id="Resource_ux86s"]
+script = ExtResource("2_meivv")
 amount = 0.0
 speed = 250.0
+time_between_execution = 2.0
+num_execution = 3.0
+num_to_fire_per_execution = 0.0
 
-[sub_resource type="Resource" id="Resource_cf4s8"]
-script = ExtResource("1_7w4fg")
-attribute_fields = SubResource("Resource_dxons")
+[sub_resource type="Resource" id="Resource_bggq6"]
+script = ExtResource("3_3tvx4")
+attribute_fields = SubResource("Resource_ux86s")
 trigger_abilities = Array[ExtResource("1_s4i4v")]([])
 action_type = 3
 target = 3
 to_be_removed = false
 
-[sub_resource type="Resource" id="Resource_871dn"]
-script = ExtResource("3_ik8vp")
-event_type = 1
-actions = Array[ExtResource("1_7w4fg")]([SubResource("Resource_cf4s8")])
-modifiers = null
+[sub_resource type="Resource" id="Resource_1tllk"]
+script = ExtResource("4_k5cua")
+event_type = 2
+actions = Array[ExtResource("3_3tvx4")]([SubResource("Resource_bggq6")])
+modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
+repeat_event_num = 3
+time_between_event_repeat = 0
 
-[sub_resource type="Resource" id="Resource_owvq6"]
-script = ExtResource("5_up4wf")
-amount = 100.0
+[sub_resource type="Resource" id="Resource_yqvbe"]
+script = ExtResource("2_meivv")
+amount = 10.0
 speed = 0.0
+time_between_execution = 0.0
+num_execution = 0.0
+num_to_fire_per_execution = 0.0
 
-[sub_resource type="Resource" id="Resource_euo2c"]
-script = ExtResource("1_7w4fg")
-attribute_fields = SubResource("Resource_owvq6")
+[sub_resource type="Resource" id="Resource_ec20c"]
+script = ExtResource("3_3tvx4")
+attribute_fields = SubResource("Resource_yqvbe")
 trigger_abilities = Array[ExtResource("1_s4i4v")]([])
 action_type = 1
 target = 2
 to_be_removed = false
 
-[sub_resource type="Resource" id="Resource_pmegv"]
+[sub_resource type="Resource" id="Resource_smsyf"]
 script = ExtResource("1_01ku4")
-target_flags = 4
+mask_flag = 1
 behavior_flags = 1
 name = ""
 description = ""
 cooldown = 0.0
-num_repeat = 0
 
-[sub_resource type="Resource" id="Resource_r1eam"]
-script = ExtResource("5_up4wf")
+[sub_resource type="Resource" id="Resource_27gx7"]
+script = ExtResource("2_meivv")
 amount = 0.0
 speed = 250.0
+time_between_execution = 0.0
+num_execution = 0.0
+num_to_fire_per_execution = 0.0
 
-[sub_resource type="Resource" id="Resource_18st8"]
-script = ExtResource("1_7w4fg")
-attribute_fields = SubResource("Resource_r1eam")
+[sub_resource type="Resource" id="Resource_v5pqt"]
+script = ExtResource("3_3tvx4")
+attribute_fields = SubResource("Resource_27gx7")
 trigger_abilities = Array[ExtResource("1_s4i4v")]([])
 action_type = 3
 target = 4
 to_be_removed = false
 
-[sub_resource type="Resource" id="Resource_m8bhs"]
-script = ExtResource("3_ik8vp")
+[sub_resource type="Resource" id="Resource_vvdcv"]
+script = ExtResource("4_k5cua")
 event_type = 2
-actions = Array[ExtResource("1_7w4fg")]([SubResource("Resource_18st8")])
+actions = Array[ExtResource("3_3tvx4")]([SubResource("Resource_v5pqt")])
 modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
+repeat_event_num = 0
+time_between_event_repeat = 0
 
-[sub_resource type="Resource" id="Resource_6rgmd"]
-script = ExtResource("5_up4wf")
-amount = 100.0
+[sub_resource type="Resource" id="Resource_5uvwo"]
+script = ExtResource("2_meivv")
+amount = 11.0
 speed = 0.0
+time_between_execution = 0.0
+num_execution = 0.0
+num_to_fire_per_execution = 0.0
 
-[sub_resource type="Resource" id="Resource_fuixl"]
-script = ExtResource("1_7w4fg")
-attribute_fields = SubResource("Resource_6rgmd")
+[sub_resource type="Resource" id="Resource_g0m82"]
+script = ExtResource("3_3tvx4")
+attribute_fields = SubResource("Resource_5uvwo")
 trigger_abilities = Array[ExtResource("1_s4i4v")]([])
 action_type = 1
 target = 2
 to_be_removed = false
 
-[sub_resource type="Resource" id="Resource_spgnb"]
-script = ExtResource("3_ik8vp")
+[sub_resource type="Resource" id="Resource_8vvk3"]
+script = ExtResource("4_k5cua")
 event_type = 3
-actions = Array[ExtResource("1_7w4fg")]([SubResource("Resource_fuixl")])
+actions = Array[ExtResource("3_3tvx4")]([SubResource("Resource_g0m82")])
 modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
+repeat_event_num = 0
+time_between_event_repeat = 0
 
-[sub_resource type="Resource" id="Resource_hbi3m"]
+[sub_resource type="Resource" id="Resource_if14s"]
 script = ExtResource("1_s4i4v")
-ability_data = SubResource("Resource_pmegv")
-ability_event_data = Array[ExtResource("3_ik8vp")]([SubResource("Resource_m8bhs"), SubResource("Resource_spgnb")])
+ability_data = SubResource("Resource_smsyf")
+ability_event_data = Array[ExtResource("4_k5cua")]([SubResource("Resource_vvdcv"), SubResource("Resource_8vvk3")])
 
-[sub_resource type="Resource" id="Resource_dmndh"]
-script = ExtResource("1_7w4fg")
-trigger_abilities = Array[ExtResource("1_s4i4v")]([SubResource("Resource_hbi3m")])
+[sub_resource type="Resource" id="Resource_qhgqa"]
+script = ExtResource("3_3tvx4")
+trigger_abilities = Array[ExtResource("1_s4i4v")]([SubResource("Resource_if14s")])
 action_type = 4
 target = 2
 to_be_removed = false
 
-[sub_resource type="Resource" id="Resource_jljgk"]
-script = ExtResource("3_ik8vp")
+[sub_resource type="Resource" id="Resource_4tycv"]
+script = ExtResource("4_k5cua")
 event_type = 3
-actions = Array[ExtResource("1_7w4fg")]([SubResource("Resource_euo2c"), SubResource("Resource_dmndh")])
-modifiers = null
+actions = Array[ExtResource("3_3tvx4")]([SubResource("Resource_ec20c"), SubResource("Resource_qhgqa")])
+modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
+repeat_event_num = 0
+time_between_event_repeat = 0
 
 [resource]
 script = ExtResource("1_s4i4v")
 ability_data = SubResource("Resource_2sr5r")
-ability_event_data = Array[ExtResource("3_ik8vp")]([SubResource("Resource_871dn"), SubResource("Resource_jljgk")])
+ability_event_data = Array[ExtResource("4_k5cua")]([SubResource("Resource_1tllk"), SubResource("Resource_4tycv")])
