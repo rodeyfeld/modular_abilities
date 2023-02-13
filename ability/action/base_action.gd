@@ -4,6 +4,7 @@ class_name BaseAction
 
 var data:AbilityActionData
 
+
 func setup(data_param:AbilityActionData):
 	self.data = data_param
 	pass
