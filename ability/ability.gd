@@ -57,7 +57,7 @@ func execute(caster_param:Actor, target_dict_param:Dictionary):
 	# Otherwise, proceed to events contained in ON_SPELL_START
 	else:
 		on_spell_start()
-		
+
 func perform_actions(actions:Array):
 	# For every action in this register, execute the action based on its targeting
 	for action in actions:
@@ -69,7 +69,8 @@ func perform_actions(actions:Array):
 		elif action.data.target == DataDrivenAbilitySingleton.target.TARGET:
 			action.execute(self, target_unit, target_position)
 		elif action.data.target == DataDrivenAbilitySingleton.target.NEAREST_ENEMY:
-			action.execute(self, target_unit.get_nearby_targets()[0], target_unit.get_nearby_targets()[0].position)
+			if len(target_unit.get_nearby_targets()) > 0:
+				action.execute(self, target_unit.get_nearby_targets()[0], target_unit.get_nearby_targets()[0].position)
 
 # EVENT REGISTER: ON_SPELL_START
 func on_spell_start():

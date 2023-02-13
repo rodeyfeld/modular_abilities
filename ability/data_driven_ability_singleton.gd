@@ -1,5 +1,10 @@
 extends Node
 
+enum attribute_field_type {
+	AMOUNT,
+	SPEED
+}
+
 enum event_types {
 	NONE,
 	ON_SPELL_START,

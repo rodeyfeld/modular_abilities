@@ -8,11 +8,8 @@ signal projectile_hit
 
 func setup(data_param:AbilityActionData):
 	super(data_param)
-	# TODO: Replace this with dictionary
-	for field in self.data.int_fields:
-		# Set the internal speed to the data param speed
-		if field.name == 'speed':
-			speed = field.value
+
+	speed = self.data.attribute_fields.speed
 
 # TODO: Consider passing this information to the projectile speed/direction/position
 # and handle its logic there. 
