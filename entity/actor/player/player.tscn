@@ -13,19 +13,16 @@ radius = 74.0608
 collision_layer = 1
 script = ExtResource("2_53o15")
 
-[node name="Camera2d" type="Camera2D" parent="." index="0"]
-zoom = Vector2(0.25, 0.25)
-
 [node name="CollisionShape2d" parent="UnitDetectionZone" index="0"]
 shape = SubResource("CircleShape2D_drggo")
 
-[node name="Hurtbox" parent="." index="3"]
+[node name="Hurtbox" parent="." index="2"]
 collision_layer = 4
 
 [node name="CollisionShape2d" parent="Hurtbox" index="0"]
 shape = SubResource("CircleShape2D_8y6xy")
 
-[node name="Sprite2d" parent="." index="4"]
+[node name="Sprite2d" parent="." index="3"]
 modulate = Color(0.262745, 0.541176, 1, 1)
 
 [editable path="AttachPoint"]

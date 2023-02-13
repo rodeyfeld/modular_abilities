@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="DataDrivenAbility" load_steps=12 format=3 uid="uid://ct3a58duv0edx"]
+
+[ext_resource type="Script" path="res://ability/ability_data.gd" id="1_01ku4"]
+[ext_resource type="Script" path="res://ability/data_driven_ability.gd" id="1_s4i4v"]
+[ext_resource type="Script" path="res://ability/fields/attribute_field_fire_data.gd" id="2_hfcba"]
+[ext_resource type="Script" path="res://ability/ability_action_data.gd" id="3_3tvx4"]
+[ext_resource type="Script" path="res://ability/fields/attribute_data.gd" id="3_m6rab"]
+[ext_resource type="Script" path="res://ability/ability_event_data.gd" id="4_k5cua"]
+
+[sub_resource type="Resource" id="Resource_27avm"]
+script = ExtResource("1_01ku4")
+mask_flag_type = 1
+behavior_flags = 1
+name = "ice nova"
+description = "several nodes in nova mode"
+cooldown = 0.0
+
+[sub_resource type="Resource" id="Resource_yntnj"]
+script = ExtResource("2_hfcba")
+attribute_field_fire_mode_type = 1
+angle_between_shots = 0.0
+time_between_execution = 0.0
+num_execution = 1.0
+num_to_fire_per_execution = 10.0
+
+[sub_resource type="Resource" id="Resource_wgylr"]
+script = ExtResource("3_m6rab")
+amount = 0.0
+speed = 10.0
+attribute_field_fire_data = SubResource("Resource_yntnj")
+
+[sub_resource type="Resource" id="Resource_tkiwy"]
+script = ExtResource("3_3tvx4")
+attribute_fields = SubResource("Resource_wgylr")
+trigger_abilities = Array[ExtResource("1_s4i4v")]([])
+action_type = 3
+target_type = 2
+to_be_removed = false
+
+[sub_resource type="Resource" id="Resource_08edy"]
+script = ExtResource("4_k5cua")
+event_type = 2
+actions = Array[ExtResource("3_3tvx4")]([SubResource("Resource_tkiwy")])
+modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
+repeat_event_num = 0
+time_between_event_repeat = 0
+
+[resource]
+script = ExtResource("1_s4i4v")
+ability_data = SubResource("Resource_27avm")
+ability_event_data = Array[ExtResource("4_k5cua")]([SubResource("Resource_08edy")])
