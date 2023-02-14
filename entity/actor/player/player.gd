@@ -6,10 +6,12 @@ class_name Player
 
 var fyreball = preload("res://ability/custom_abilities/fyreball.tres")
 var ice_nova = preload("res://ability/custom_abilities/ice_nova.tres")
+var chain_shot = preload("res://ability/custom_abilities/chain_shot.tres")
 var data_driven_ability_script = load("res://ability/data_driven_ability.gd")
 
 var ability0:Ability
 var ability1:Ability
+var ability2:Ability
 
 
 func _ready():
@@ -20,12 +22,17 @@ func _ready():
 	var data_driven_ability1 = data_driven_ability_script.new()
 	ability1 = data_driven_ability1.parse(ice_nova)
 	add_child(ability1)
+	var data_driven_ability2 = data_driven_ability_script.new()
+	ability2 = data_driven_ability2.parse(chain_shot)
+	add_child(ability2)
 		
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		ability0.execute(self, {'target_unit':self, 'target_position': get_global_mouse_position()})
 	if Input.is_action_just_pressed("test1"):
 		ability1.execute(self, {'target_unit':self, 'target_position': get_global_mouse_position()})
+	if Input.is_action_just_pressed("test2"):
+		ability2.execute(self, {'target_unit':self, 'target_position': get_global_mouse_position()})
 	
 
 	# Configure deadzone for mouse
