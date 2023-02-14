@@ -3,7 +3,7 @@ extends Node2D
 class_name Ability
 
 @onready var cooldown_timer = $CooldownTimer
-signal ability_executed
+signal ability_action_finished
 
 var ability_data:AbilityData
 var caster:Actor

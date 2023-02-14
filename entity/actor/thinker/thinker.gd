@@ -14,6 +14,6 @@ func _ready():
 	ability_offensive_attach_point.global_position.x = distance * cos(angle) + self.position.x
 	ability_offensive_attach_point.global_position.y = distance * sin(angle) + self.position.y
 
-func on_work_complete():
+func work_complete():
 	print(self.title, self, " THINKER_DONE")
 	self.queue_free()
