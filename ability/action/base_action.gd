@@ -10,9 +10,8 @@ func setup(data_param:AbilityActionData):
 	pass
 
 func execute_all(_caster_ability:Ability, _target:Actor, _target_point:Vector2):
-	print(self.data.attribute_fields.attribute_field_fire_data.num_execution)
 	for num in range(self.data.attribute_fields.attribute_field_fire_data.num_execution):
-		action_execution_num_timer.start(self.data.attribute_fields.time_between_execution)
+		action_execution_num_timer.start(self.data.attribute_fields.attribute_field_fire_data.time_between_execution)
 		self.execute(_caster_ability, _target, _target_point)
 		await action_execution_num_timer.timeout
 		

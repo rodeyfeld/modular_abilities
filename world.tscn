@@ -7,11 +7,14 @@
 
 [node name="ProjectileContainer" type="Node2D" parent="."]
 
+[node name="ThinkerContainer" type="Node2D" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("1_ypvuq")]
 position = Vector2(44, -164)
 collision_mask = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.5, 0.5)
 
 [node name="Enemy" parent="." instance=ExtResource("2_45aac")]
 position = Vector2(725, -170)

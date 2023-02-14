@@ -2,7 +2,7 @@ extends BaseAction
 
 var ability:Ability
 var data_driven_ability_script = load("res://ability/data_driven_ability.gd")
-
+var thinker_scene = load("res://entity/actor/thinker/thinker.tscn")
 # Auxiliary actions are actions that contain another ability to be fired 
 # when the event register is called
 
@@ -14,15 +14,23 @@ func setup(data_param:AbilityActionData):
 	# TODO: Support multiple ablities to be added here
 	ability = data_driven_ability.parse(self.data.trigger_abilities[0])
 
-func execute(caster_ability:Ability, target:Actor, _target_point:Vector2):
+func execute(caster_ability:Ability, target:Actor, target_point:Vector2):
 	# Add the ability to the caster's tree
 	# The target is the caster of the ability
-	var caster = target
 	var data_driven_ability = data_driven_ability_script.new()
 	ability = data_driven_ability.parse(self.data.trigger_abilities[0])
+	var caster = caster_ability.caster
+	print(target, target_point)
+	if target:
+		caster = target
+	else:
+		var thinker_container_node = caster_ability.caster.get_tree().get_root().get_node("World/ThinkerContainer")
+		caster = thinker_scene.instantiate()
+		caster.global_position = target_point
+		thinker_container_node.call_deferred("add_child", caster)
+		await caster.ready
+	print(caster)
 	caster.add_child(ability)
-	# If the ability is null, set it to repeat the current ability. 
-	if !ability:
-		ability = caster_ability
+
 	# Attempt to execute the ability with updated params
-	ability.execute(caster, {'target_unit':target, 'target_position': _target_point})
+	ability.execute(caster, {'target_unit':target, 'target_position': target_point})

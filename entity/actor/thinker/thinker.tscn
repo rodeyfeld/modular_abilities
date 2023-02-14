@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3cfso55yxuy"]
+
+[ext_resource type="PackedScene" uid="uid://dlhhp4yta78i6" path="res://entity/actor/actor.tscn" id="1_emrui"]
+[ext_resource type="Script" path="res://entity/actor/thinker/thinker.gd" id="2_wwd7e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_drggo"]
+radius = 340.982
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8y6xy"]
+radius = 74.0608
+
+[node name="Thinker" instance=ExtResource("1_emrui")]
+collision_layer = 1
+script = ExtResource("2_wwd7e")
+
+[node name="CollisionShape2d" parent="UnitDetectionZone" index="0"]
+shape = SubResource("CircleShape2D_drggo")
+
+[node name="Hurtbox" parent="." index="2"]
+collision_layer = 4
+
+[node name="CollisionShape2d" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_8y6xy")
+
+[node name="Sprite2d" parent="." index="3"]
+modulate = Color(0.435294, 0.541176, 0, 1)
+
+[editable path="AttachPoint"]
+[editable path="UnitDetectionZone"]
+[editable path="Hurtbox"]

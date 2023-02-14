@@ -16,6 +16,7 @@ enum event_types {
 	ON_SPELL_START,
 	ON_ABILITY_START,
 	ON_PROJECTILE_HIT,
+	ON_PROJECTILE_TIMEOUT,
 }
 
 enum action_type {

@@ -4,13 +4,13 @@ class_name Ability
 
 @onready var cooldown_timer = $CooldownTimer
 
+
 var ability_data:AbilityData
 var caster:Actor
 var targets:Dictionary
 var event_register: Dictionary = {}
 var is_running:bool
 var is_cast:bool
-var cast_point:Vector2
 var target_position:Vector2
 var target_unit:Actor
 var channelled:bool = false:
@@ -32,6 +32,7 @@ func setup(data:AbilityData):
 	event_register[DataDrivenAbilitySingleton.event_types.ON_ABILITY_START] = []
 	event_register[DataDrivenAbilitySingleton.event_types.ON_SPELL_START] = []
 	event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT] = []
+	event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_TIMEOUT] = []
 	
 func execute(caster_param:Actor, target_dict_param:Dictionary):
 	# This is called on ability cast. The caster_param is updated to the current
@@ -40,7 +41,6 @@ func execute(caster_param:Actor, target_dict_param:Dictionary):
 	caster = caster_param
 	targets = target_dict_param
 	is_running = true
-	cast_point = caster_param.position
 	target_unit = target_dict_param['target_unit']
 	target_position = target_dict_param['target_position']
 	
@@ -60,7 +60,6 @@ func execute(caster_param:Actor, target_dict_param:Dictionary):
 func perform_actions(event_type:DataDrivenAbilitySingleton.event_types):
 	# Takes an event_type enum. This is used to get the arrry of AbilityEventData 
 	var actions = event_register[event_type]
-	print("ACTIONS: ", actions)
 	
 	# For every action in this register, execute the action based on its targeting
 	for action in actions:
@@ -69,15 +68,15 @@ func perform_actions(event_type:DataDrivenAbilitySingleton.event_types):
 		add_child(action_execution_num_timer)
 		# TODO: Recieve a signal from the actions and call further processing
 		if action.data.target_type == DataDrivenAbilitySingleton.target_type.CASTER:
-			action.execute(self, caster, target_position)
+			action.execute_all(self, caster, target_position)
 		elif action.data.target_type == DataDrivenAbilitySingleton.target_type.POINT:
 			action.execute_all(self, null, target_position)
 		elif action.data.target_type == DataDrivenAbilitySingleton.target_type.TARGET:
-			action.execute(self, target_unit, target_position)
+			action.execute_all(self, target_unit, target_position)
 		elif action.data.target_type == DataDrivenAbilitySingleton.target_type.NEAREST_ENEMY:
 			if len(target_unit.get_nearby_targets()) > 0:
-				action.execute(self, target_unit.get_nearby_targets()[0], target_unit.get_nearby_targets()[0].position)
-		
+				action.execute_all(self, target_unit.get_nearby_targets()[0], target_unit.get_nearby_targets()[0].position)
+				
 # EVENT REGISTER: ON_SPELL_START
 func on_spell_start():
 	# Start the cooldown for this ability
@@ -88,8 +87,16 @@ func on_spell_start():
 
 # EVENT REGISTER: ON_PROJECTILE_HIT
 func on_projectile_hit(target:Actor):
+	print("RUNNING EVENT_REGISTER: ON_PROJECTILE_HIT")
 	target_unit = target
 	target_position = target.global_position
 	if event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT] != []:
 		perform_actions(DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_HIT)
 	
+# EVENT REGISTER: ON_PROJECTILE_TIMEOUT
+func on_projectile_timeout(target_pos:Vector2):
+	print("RUNNING EVENT_REGISTER: ON_PROJECTILE_TIMEOUT")
+	target_position = target_pos
+	if event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_TIMEOUT] != []:
+		perform_actions(DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_TIMEOUT)
+
