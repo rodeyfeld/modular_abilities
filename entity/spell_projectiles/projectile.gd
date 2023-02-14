@@ -2,7 +2,7 @@ extends Entity
 
 class_name Projectile
 
-@export var initial_speed:int = 0
+@export var initial_speed:float = 0
 @export var initial_direction:Vector2 = Vector2.ZERO
 
 signal projectile_hit

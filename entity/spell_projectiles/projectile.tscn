@@ -10,7 +10,7 @@ radius = 64.0703
 [node name="Projectile" instance=ExtResource("1_seja2")]
 modulate = Color(1, 1, 0.466667, 1)
 script = ExtResource("2_p22fd")
-initial_speed = 0
+initial_speed = 0.0
 initial_direction = Vector2(0, 0)
 
 [node name="Hitbox" parent="." index="2" instance=ExtResource("3_f4rn5")]
