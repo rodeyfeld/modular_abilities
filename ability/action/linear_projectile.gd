@@ -4,8 +4,7 @@ const projectile_scene = preload("res://entity/spell_projectiles/projectile.tscn
 
 var speed:float
 
-signal projectile_hit
-signal projectile_timeout
+
 
 func setup(data_param:AbilityActionData):
 	super(data_param)

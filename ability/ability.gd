@@ -3,7 +3,7 @@ extends Node2D
 class_name Ability
 
 @onready var cooldown_timer = $CooldownTimer
-
+signal ability_executed
 
 var ability_data:AbilityData
 var caster:Actor
@@ -56,7 +56,8 @@ func execute(caster_param:Actor, target_dict_param:Dictionary):
 	# Otherwise, proceed to events contained in ON_SPELL_START
 	else:
 		on_spell_start()
-
+	emit_signal("ability_executed")
+	
 func perform_actions(event_type:DataDrivenAbilitySingleton.event_types):
 	# Takes an event_type enum. This is used to get the arrry of AbilityEventData 
 	var actions = event_register[event_type]
@@ -100,3 +101,4 @@ func on_projectile_timeout(target_pos:Vector2):
 	if event_register[DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_TIMEOUT] != []:
 		perform_actions(DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_TIMEOUT)
 
+	

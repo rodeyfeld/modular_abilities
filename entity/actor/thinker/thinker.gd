@@ -5,7 +5,6 @@ class_name Thinker
 @onready var ability_offensive_attach_point:Marker2D = $AttachPoint/AbilityOffensiveAttachPoint
 
 
-
 func _ready():
 	title = "thinker"
 
@@ -14,3 +13,6 @@ func _ready():
 	var distance = 100
 	ability_offensive_attach_point.global_position.x = distance * cos(angle) + self.position.x
 	ability_offensive_attach_point.global_position.y = distance * sin(angle) + self.position.y
+
+func on_work_complete():
+	self.queue_free()

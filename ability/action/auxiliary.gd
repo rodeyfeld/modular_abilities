@@ -28,6 +28,7 @@ func execute(caster_ability:Ability, target:Actor, target_point:Vector2):
 		caster.global_position = target_point
 		thinker_container_node.call_deferred("add_child", caster)
 		await caster.ready
+		ability.connect("ability_executed", caster.on_work_complete)
 	print(caster)
 	caster.add_child(ability)
 
