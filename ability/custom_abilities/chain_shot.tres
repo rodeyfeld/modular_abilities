@@ -1,0 +1,181 @@
+[gd_resource type="Resource" script_class="DataDrivenAbility" load_steps=29 format=3 uid="uid://c1d7lk3sygj7m"]
+
+[ext_resource type="Script" path="res://ability/data_driven_ability.gd" id="1_faewn"]
+[ext_resource type="Script" path="res://ability/ability_data.gd" id="1_rixpi"]
+[ext_resource type="Script" path="res://ability/fields/attribute_field_fire_data.gd" id="2_hvg5m"]
+[ext_resource type="Script" path="res://ability/fields/attribute_data.gd" id="3_l1icg"]
+[ext_resource type="Script" path="res://ability/ability_action_data.gd" id="4_lumyo"]
+[ext_resource type="Script" path="res://ability/ability_event_data.gd" id="5_m0owl"]
+
+[sub_resource type="Resource" id="Resource_abi5p"]
+script = ExtResource("1_rixpi")
+mask_flag_type = 1
+behavior_flags = 1
+name = ""
+description = ""
+cooldown = 0.0
+
+[sub_resource type="Resource" id="Resource_dsdsn"]
+script = ExtResource("2_hvg5m")
+attribute_field_fire_mode_type = 0
+angle_between_shots = 0.0
+time_between_execution = 0.0
+num_execution = 1.0
+num_to_fire_per_execution = 1.0
+timeout = 5.0
+
+[sub_resource type="Resource" id="Resource_a2p2p"]
+script = ExtResource("3_l1icg")
+amount = 0.0
+speed = 100.0
+attribute_field_fire_data = SubResource("Resource_dsdsn")
+
+[sub_resource type="Resource" id="Resource_bdfix"]
+script = ExtResource("4_lumyo")
+attribute_fields = SubResource("Resource_a2p2p")
+trigger_abilities = Array[ExtResource("1_faewn")]([])
+action_type = 3
+target_type = 3
+to_be_removed = false
+
+[sub_resource type="Resource" id="Resource_jcne8"]
+script = ExtResource("5_m0owl")
+event_type = 2
+actions = Array[ExtResource("4_lumyo")]([SubResource("Resource_bdfix")])
+modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
+repeat_event_num = 0
+time_between_event_repeat = 0
+
+[sub_resource type="Resource" id="Resource_4l3yc"]
+script = ExtResource("2_hvg5m")
+attribute_field_fire_mode_type = 0
+angle_between_shots = 0.0
+time_between_execution = 0.0
+num_execution = 1.0
+num_to_fire_per_execution = 1.0
+timeout = 3.0
+
+[sub_resource type="Resource" id="Resource_i1q71"]
+script = ExtResource("3_l1icg")
+amount = 20.0
+speed = 0.0
+attribute_field_fire_data = SubResource("Resource_4l3yc")
+
+[sub_resource type="Resource" id="Resource_qd8ne"]
+script = ExtResource("4_lumyo")
+attribute_fields = SubResource("Resource_i1q71")
+trigger_abilities = Array[ExtResource("1_faewn")]([])
+action_type = 1
+target_type = 2
+to_be_removed = false
+
+[sub_resource type="Resource" id="Resource_xcb1m"]
+script = ExtResource("2_hvg5m")
+attribute_field_fire_mode_type = 0
+angle_between_shots = 0.0
+time_between_execution = 0.0
+num_execution = 1.0
+num_to_fire_per_execution = 1.0
+timeout = 3.0
+
+[sub_resource type="Resource" id="Resource_vqnlt"]
+script = ExtResource("3_l1icg")
+amount = 0.0
+speed = 0.0
+attribute_field_fire_data = SubResource("Resource_xcb1m")
+
+[sub_resource type="Resource" id="Resource_nhj6i"]
+script = ExtResource("1_rixpi")
+mask_flag_type = 1
+behavior_flags = 1
+name = ""
+description = ""
+cooldown = 0.0
+
+[sub_resource type="Resource" id="Resource_64i2m"]
+script = ExtResource("2_hvg5m")
+attribute_field_fire_mode_type = 0
+angle_between_shots = 0.0
+time_between_execution = 0.0
+num_execution = 1.0
+num_to_fire_per_execution = 1.0
+timeout = 3.0
+
+[sub_resource type="Resource" id="Resource_63iw5"]
+script = ExtResource("3_l1icg")
+amount = 0.0
+speed = 100.0
+attribute_field_fire_data = SubResource("Resource_64i2m")
+
+[sub_resource type="Resource" id="Resource_gfw2v"]
+script = ExtResource("4_lumyo")
+attribute_fields = SubResource("Resource_63iw5")
+trigger_abilities = Array[ExtResource("1_faewn")]([])
+action_type = 3
+target_type = 4
+to_be_removed = false
+
+[sub_resource type="Resource" id="Resource_md2h4"]
+script = ExtResource("5_m0owl")
+event_type = 2
+actions = Array[ExtResource("4_lumyo")]([SubResource("Resource_gfw2v")])
+modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
+repeat_event_num = 0
+time_between_event_repeat = 0
+
+[sub_resource type="Resource" id="Resource_1gkre"]
+script = ExtResource("2_hvg5m")
+attribute_field_fire_mode_type = 0
+angle_between_shots = 0.0
+time_between_execution = 0.0
+num_execution = 1.0
+num_to_fire_per_execution = 1.0
+timeout = 3.0
+
+[sub_resource type="Resource" id="Resource_cxmnx"]
+script = ExtResource("3_l1icg")
+amount = 22.0
+speed = 0.0
+attribute_field_fire_data = SubResource("Resource_1gkre")
+
+[sub_resource type="Resource" id="Resource_xqmml"]
+script = ExtResource("4_lumyo")
+attribute_fields = SubResource("Resource_cxmnx")
+trigger_abilities = Array[ExtResource("1_faewn")]([])
+action_type = 1
+target_type = 2
+to_be_removed = false
+
+[sub_resource type="Resource" id="Resource_4l3ir"]
+script = ExtResource("5_m0owl")
+event_type = 3
+actions = Array[ExtResource("4_lumyo")]([SubResource("Resource_xqmml")])
+modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
+repeat_event_num = 0
+time_between_event_repeat = 0
+
+[sub_resource type="Resource" id="Resource_edw2g"]
+script = ExtResource("1_faewn")
+ability_data = SubResource("Resource_nhj6i")
+ability_event_data = Array[ExtResource("5_m0owl")]([SubResource("Resource_md2h4"), SubResource("Resource_4l3ir")])
+
+[sub_resource type="Resource" id="Resource_7g66w"]
+script = ExtResource("4_lumyo")
+attribute_fields = SubResource("Resource_vqnlt")
+trigger_abilities = Array[ExtResource("1_faewn")]([SubResource("Resource_edw2g")])
+action_type = 4
+target_type = 2
+to_be_removed = false
+
+[sub_resource type="Resource" id="Resource_wvilt"]
+script = ExtResource("5_m0owl")
+event_type = 3
+actions = Array[ExtResource("4_lumyo")]([SubResource("Resource_qd8ne"), SubResource("Resource_7g66w")])
+modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
+repeat_event_num = 0
+time_between_event_repeat = 0
+
+[resource]
+script = ExtResource("1_faewn")
+ability_data = SubResource("Resource_abi5p")
+ability_event_data = Array[ExtResource("5_m0owl")]([SubResource("Resource_jcne8"), SubResource("Resource_wvilt")])

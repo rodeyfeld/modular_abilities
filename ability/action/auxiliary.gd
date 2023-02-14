@@ -20,7 +20,6 @@ func execute(caster_ability:Ability, target:Actor, target_point:Vector2):
 	var data_driven_ability = data_driven_ability_script.new()
 	ability = data_driven_ability.parse(self.data.trigger_abilities[0])
 	var caster = caster_ability.caster
-	print(target, target_point)
 	if target:
 		caster = target
 	else:
