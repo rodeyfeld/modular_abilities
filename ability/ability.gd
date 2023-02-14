@@ -56,7 +56,7 @@ func execute(caster_param:Actor, target_dict_param:Dictionary):
 	# Otherwise, proceed to events contained in ON_SPELL_START
 	else:
 		on_spell_start()
-	emit_signal("ability_executed")
+
 	
 func perform_actions(event_type:DataDrivenAbilitySingleton.event_types):
 	# Takes an event_type enum. This is used to get the arrry of AbilityEventData 
@@ -77,7 +77,7 @@ func perform_actions(event_type:DataDrivenAbilitySingleton.event_types):
 		elif action.data.target_type == DataDrivenAbilitySingleton.target_type.NEAREST_ENEMY:
 			if len(target_unit.get_nearby_targets()) > 0:
 				action.execute_all(self, target_unit.get_nearby_targets()[0], target_unit.get_nearby_targets()[0].position)
-				
+	emit_signal("ability_executed")
 # EVENT REGISTER: ON_SPELL_START
 func on_spell_start():
 	# Start the cooldown for this ability
