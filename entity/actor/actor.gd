@@ -39,7 +39,6 @@ func _on_unit_detection_zone_body_exited(body):
 	nearby_targetable_units.erase(body)
 	
 func create_nova_attach_point(num, num_required):
-	var curr_angle:float = 0
 	var distance = 100
 	var angle_rad = (TAU / num_required) * num
 
