@@ -11,8 +11,7 @@ var attach_point_scene = load("res://entity/actor/attach_point.tscn")
 var health:int
 var title:String
 var nearby_targetable_units = []
-var ability_offensive_attach_point_distance:float = 100.0
-
+var DEADZONE:float = 100.0
 
 func update_health(amount, _title):
 	# Any time this function called, it will update the health and provide 
@@ -37,31 +36,50 @@ func _on_unit_detection_zone_body_entered(body):
 func _on_unit_detection_zone_body_exited(body):
 	# Remove actor if they have left the targets radius
 	nearby_targetable_units.erase(body)
+
+func create_linear_attach_point(dir):
+	var attach_point:AttachPoint = attach_point_scene.instantiate()
+	ability_attach_point.add_child(attach_point)
+	var angle = self.get_angle_to(dir)
+	print(dir)
+	attach_point.global_position.x = DEADZONE * cos(angle) + self.position.x
+	attach_point.global_position.y = DEADZONE * sin(angle) + self.position.y
+
+	return attach_point
 	
 func create_nova_attach_point(num, num_required):
-	var distance = 100
 	var angle_rad = (TAU / num_required) * num
 
 	var attach_point:AttachPoint = attach_point_scene.instantiate()
 	ability_attach_point.add_child(attach_point)
 	attach_point.title_label.text = str(num)
-	attach_point.global_position.x = distance * cos(angle_rad) + self.position.x
-	attach_point.global_position.y = distance * sin(angle_rad) + self.position.y
+	attach_point.global_position.x = DEADZONE * cos(angle_rad) + self.position.x
+	attach_point.global_position.y = DEADZONE * sin(angle_rad) + self.position.y
 	return attach_point
 
-func create_spread_attach_point(num, num_required, angle_between_shots):
-	var distance = 100
-	var total_angle_difference = num_required * angle_between_shots
+func create_spread_attach_point(dir, num, num_required, angle_between_shots):
+	
 	var attach_point:AttachPoint = attach_point_scene.instantiate()
-	var curr_angle = 0 
-	var flip_bit = 0
-	if (num_required / num) <= 2:
-		flip_bit = 1
-	else:
-		flip_bit = -1
-	curr_angle = num * angle_between_shots * flip_bit
-
 	ability_attach_point.add_child(attach_point)
-	attach_point.title_label.text = str(num)
-	attach_point.global_position.x = distance * curr_angle + self.position.x
-	attach_point.global_position.y = distance * curr_angle + self.position.y
+	print(dir)
+	var curr_angle = rad_to_deg(self.get_angle_to(dir)) + (num * angle_between_shots)
+	print(curr_angle)
+	var angle = deg_to_rad(curr_angle)
+	
+	
+	attach_point.global_position.x = DEADZONE * cos(angle) + self.position.x
+	attach_point.global_position.y = DEADZONE * sin(angle) + self.position.y
+	
+	return attach_point
+#	var middle_offset = angle_between_shots if (num_required % 2) == 0 else 0
+#	var DEADZONE = 100
+#	var total_angle_difference = num_required * angle_between_shots
+#	var attach_point:AttachPoint = attach_point_scene.instantiate()
+#	var curr_angle = 0 
+#	var flip_bit = 0
+#	if (num_required / num) <= 2:
+#		flip_bit = 1
+#	else:
+#		flip_bit = -1
+#
+

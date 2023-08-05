@@ -30,18 +30,26 @@ func execute(caster_ability:Ability, _target:Actor, target_position:Vector2):
 		projectile.connect("projectile_hit", caster_ability.on_projectile_hit)
 		projectile.connect("projectile_timeout", caster_ability.on_projectile_timeout)
 		if firing_mode == DataDrivenAbilitySingleton.attribute_field_fire_mode_type.NOVA:
-			attach_node = caster_ability.caster.create_nova_attach_point(num, self.data.attribute_fields.attribute_field_fire_data.num_to_fire_per_execution)
+			attach_node = caster_ability.caster.create_nova_attach_point(
+				num,
+				self.data.attribute_fields.attribute_field_fire_data.num_to_fire_per_execution
+			)
 			dir = attach_node.position
 		elif firing_mode == DataDrivenAbilitySingleton.attribute_field_fire_mode_type.SPREAD:
-			attach_node = caster_ability.caster.create_spread_attach_point(num,
-			 self.data.attribute_fields.attribute_field_fire_data.num_to_fire_per_execution,
-			 self.data.attribute_fields.attribute_field_fire_data.angle_between_shots
+			attach_node = caster_ability.caster.create_spread_attach_point(
+				target_position,
+				num,
+				self.data.attribute_fields.attribute_field_fire_data.num_to_fire_per_execution,
+				self.data.attribute_fields.attribute_field_fire_data.angle_between_shots
 			)
-			pass
+			dir = attach_node.position
 		elif firing_mode == DataDrivenAbilitySingleton.attribute_field_fire_mode_type.LINEAR:
 			# Create our projectile and add it to the container for projectiles
-			attach_node = caster_ability.caster.get_node("AttachPoint/AbilityOffensiveAttachPoint")
-			dir = target_position - attach_node.global_position
+			attach_node = caster_ability.caster.create_linear_attach_point(
+				target_position
+			)
+#			dir = attach_node.global_position 
+			dir = attach_node.position
 		projectile.global_position = attach_node.global_position
 		
 		# Configure its direction and speed
