@@ -48,3 +48,20 @@ func create_nova_attach_point(num, num_required):
 	attach_point.global_position.x = distance * cos(angle_rad) + self.position.x
 	attach_point.global_position.y = distance * sin(angle_rad) + self.position.y
 	return attach_point
+
+func create_spread_attach_point(num, num_required, angle_between_shots):
+	var distance = 100
+	var total_angle_difference = num_required * angle_between_shots
+	var attach_point:AttachPoint = attach_point_scene.instantiate()
+	var curr_angle = 0 
+	var flip_bit = 0
+	if (num_required / num) <= 2:
+		flip_bit = 1
+	else:
+		flip_bit = -1
+	curr_angle = num * angle_between_shots * flip_bit
+
+	ability_attach_point.add_child(attach_point)
+	attach_point.title_label.text = str(num)
+	attach_point.global_position.x = distance * curr_angle + self.position.x
+	attach_point.global_position.y = distance * curr_angle + self.position.y

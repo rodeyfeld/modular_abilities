@@ -8,7 +8,7 @@ enum attribute_field_type {
 enum attribute_field_fire_mode_type {
 	LINEAR,
 	NOVA,
-	CONE,
+	SPREAD,
 }
 
 enum event_types {

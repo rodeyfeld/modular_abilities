@@ -32,7 +32,11 @@ func execute(caster_ability:Ability, _target:Actor, target_position:Vector2):
 		if firing_mode == DataDrivenAbilitySingleton.attribute_field_fire_mode_type.NOVA:
 			attach_node = caster_ability.caster.create_nova_attach_point(num, self.data.attribute_fields.attribute_field_fire_data.num_to_fire_per_execution)
 			dir = attach_node.position
-		elif firing_mode == DataDrivenAbilitySingleton.attribute_field_fire_mode_type.CONE:
+		elif firing_mode == DataDrivenAbilitySingleton.attribute_field_fire_mode_type.SPREAD:
+			attach_node = caster_ability.caster.create_spread_attach_point(num,
+			 self.data.attribute_fields.attribute_field_fire_data.num_to_fire_per_execution,
+			 self.data.attribute_fields.attribute_field_fire_data.angle_between_shots
+			)
 			pass
 		elif firing_mode == DataDrivenAbilitySingleton.attribute_field_fire_mode_type.LINEAR:
 			# Create our projectile and add it to the container for projectiles

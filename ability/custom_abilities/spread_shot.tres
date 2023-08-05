@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="DataDrivenAbility" load_steps=15 format=3 uid="uid://xsbx4oba2cn2"]
+
+[ext_resource type="Script" path="res://ability/ability_data.gd" id="1_75jks"]
+[ext_resource type="Script" path="res://ability/fields/attribute_field_fire_data.gd" id="2_j1wii"]
+[ext_resource type="Script" path="res://ability/fields/attribute_data.gd" id="3_gb83n"]
+[ext_resource type="Script" path="res://ability/ability_action_data.gd" id="4_ctx2m"]
+[ext_resource type="Script" path="res://ability/ability_event_data.gd" id="5_juvqu"]
+[ext_resource type="Script" path="res://ability/data_driven_ability.gd" id="7_wwgey"]
+
+[sub_resource type="Resource" id="Resource_sgkju"]
+script = ExtResource("1_75jks")
+mask_flag_type = 1
+behavior_flags = 1
+name = ""
+description = ""
+cooldown = 0.0
+
+[sub_resource type="Resource" id="Resource_cgh5f"]
+script = ExtResource("2_j1wii")
+attribute_field_fire_mode_type = 0
+angle_between_shots = 0.0
+time_between_execution = 1.0
+num_execution = 1.0
+num_to_fire_per_execution = 1.0
+timeout = 3.0
+
+[sub_resource type="Resource" id="Resource_untnd"]
+script = ExtResource("3_gb83n")
+amount = 0.0
+speed = 100.0
+attribute_field_fire_data = SubResource("Resource_cgh5f")
+
+[sub_resource type="Resource" id="Resource_7o6k7"]
+script = ExtResource("4_ctx2m")
+attribute_fields = SubResource("Resource_untnd")
+trigger_abilities = Array[ExtResource("7_wwgey")]([])
+action_type = 3
+target_type = 3
+to_be_removed = false
+
+[sub_resource type="Resource" id="Resource_36ivp"]
+script = ExtResource("5_juvqu")
+event_type = 2
+actions = Array[ExtResource("4_ctx2m")]([SubResource("Resource_7o6k7")])
+modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
+repeat_event_num = 0
+time_between_event_repeat = 0
+
+[sub_resource type="Resource" id="Resource_rx12g"]
+script = ExtResource("3_gb83n")
+amount = 10.0
+speed = 0.0
+
+[sub_resource type="Resource" id="Resource_p3q30"]
+script = ExtResource("4_ctx2m")
+attribute_fields = SubResource("Resource_rx12g")
+trigger_abilities = Array[ExtResource("7_wwgey")]([])
+action_type = 1
+target_type = 2
+to_be_removed = false
+
+[sub_resource type="Resource" id="Resource_ueccs"]
+script = ExtResource("5_juvqu")
+event_type = 3
+actions = Array[ExtResource("4_ctx2m")]([SubResource("Resource_p3q30")])
+modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
+repeat_event_num = 0
+time_between_event_repeat = 0
+
+[resource]
+script = ExtResource("7_wwgey")
+ability_data = SubResource("Resource_sgkju")
+ability_event_data = Array[ExtResource("5_juvqu")]([SubResource("Resource_36ivp"), SubResource("Resource_ueccs")])
