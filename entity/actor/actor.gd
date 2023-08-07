@@ -63,52 +63,16 @@ func create_spread_attach_point(dir, num, num_required, angle_between_shots):
 	ability_attach_point.add_child(attach_point)
 	
 	var target_angle = rad_to_deg(self.get_angle_to(dir))
-	var total_angle = angle_between_shots * num_required
-	print(num)
-	print(total_angle/num)
-	
+	var total_angle = angle_between_shots * num_required	
 	var wedge = num * angle_between_shots
 	var start_angle = total_angle / 2  
-#	var curr_angle = 0
+
 	var curr_angle = (target_angle - start_angle + wedge) 
-#	var curr_angle = (((num_required - num) * angle_between_shots) + (total_angle / num)
-	
-	
-	
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#	var even_bit = 1 if (floor(num_required) % 2) == 0 else 0
-#	var flip_bit = -1 if floor(int(num) / int(num_required)) == 0 else 1
-#
-#	var curr_angle = target_angle + (num * angle_between_shots)
-#	if even_bit:
-#
-#		pass
-#
-#	var test_angle = target_angle + (angle_between_shots * flip_bit)
+
 	var rad_angle = deg_to_rad(curr_angle)
-	
-	
+
 	attach_point.global_position.x = DEADZONE * cos(rad_angle) + self.position.x
 	attach_point.global_position.y = DEADZONE * sin(rad_angle) + self.position.y
 	
 	return attach_point
-#	var middle_offset = angle_between_shots if (num_required % 2) == 0 else 0
-#	var DEADZONE = 100
-#	var total_angle_difference = num_required * angle_between_shots
-#	var attach_point:AttachPoint = attach_point_scene.instantiate()
-#	var curr_angle = 0 
-#	var flip_bit = 0
-#	if (num_required / num) <= 2:
-#		flip_bit = 1
-#	else:
-#		flip_bit = -1
-#
 
