@@ -23,6 +23,7 @@ time_between_execution = 0.2
 num_execution = 3.0
 num_to_fire_per_execution = 10.0
 timeout = 3.0
+arc = 0.0
 
 [sub_resource type="Resource" id="Resource_wgylr"]
 script = ExtResource("3_m6rab")

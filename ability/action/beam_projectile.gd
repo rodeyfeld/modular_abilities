@@ -1,6 +1,6 @@
 extends BaseAction
 
-const projectile_scene = preload("res://entity/spells/projectile.tscn")
+const beam_scene = preload("res://entity/spells/beam.tscn")
 
 var speed:float
 var initial_arc:float
@@ -12,7 +12,7 @@ func setup(data_param:AbilityActionData):
 	speed = self.data.attribute_fields.speed
 	initial_arc = self.data.attribute_fields.attribute_field_fire_data.arc
 
-# TODO: Consider passing this information to the projectile speed/direction/position
+# TODO: Consider passing this information to the beam speed/direction/position
 # and handle its logic there. 
 func execute(caster_ability:Ability, _target:Actor, target_position:Vector2):
 	# Get the position for this offensive ability
@@ -20,25 +20,25 @@ func execute(caster_ability:Ability, _target:Actor, target_position:Vector2):
 
 	for num in range(self.data.attribute_fields.attribute_field_fire_data.num_to_fire_per_execution):
 		var dir:Vector2 = Vector2.ZERO
-		var projectile:Projectile = projectile_scene.instantiate()
-		var projectile_container_node = caster_ability.caster.get_tree().get_root().get_node("World/ProjectileContainer")
-		projectile_container_node.call_deferred("add_child", projectile)
+		var beam:Beam = beam_scene.instantiate()
+		var beam_container_node = caster_ability.caster.get_tree().get_root().get_node("World/ProjectileContainer")
+		beam_container_node.call_deferred("add_child", beam)
 
-		# Connect the signal "projectile_hit" to this projectile, this will call the 
+		# Connect the signal "beam_hit" to this projectile, this will call the 
 		# on_projectile_hit function in the ability when the "projectile_hit" signal is
 		# emitted. See _on_hitbox_area_entered in "res://entity/spell_projectiles/projectile.gd"
-		projectile.connect("projectile_hit", caster_ability.on_projectile_hit)
-		projectile.connect("projectile_timeout", caster_ability.on_projectile_timeout)
+		beam.connect("projectile_hit", caster_ability.on_projectile_hit)
+		beam.connect("projectile_timeout", caster_ability.on_projectile_timeout)
 		var attach_node:AttachPoint = caster_ability.caster.get_attach_node(num, target_position, self.data.attribute_fields)
 		dir = attach_node.position
-		projectile.global_position = attach_node.global_position
+		beam.global_position = attach_node.global_position
 		
 		# Configure its direction and speed
-		projectile.initial_speed = speed
-		projectile.initial_direction = dir
-		projectile.initial_arc = initial_arc
-		# Fire the projectile
-		projectile.fire(
+		beam.initial_speed = speed
+		beam.initial_direction = dir
+		beam.initial_arc = initial_arc
+		# Fire the beam
+		beam.fire(
 			caster_ability.caster,
 			self.data.attribute_fields.attribute_field_fire_data.timeout
 		)

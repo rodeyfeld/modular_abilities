@@ -1,19 +1,22 @@
 [gd_scene load_steps=5 format=3 uid="uid://c8mtuxcd6tw7n"]
 
-[ext_resource type="PackedScene" uid="uid://dmfrqt2kt6q6u" path="res://entity/entity.tscn" id="1_seja2"]
-[ext_resource type="Script" path="res://entity/spell_projectiles/projectile.gd" id="2_p22fd"]
-[ext_resource type="PackedScene" uid="uid://lk25ykwcgvns" path="res://entity/actor/overlaps/hitbox.tscn" id="3_f4rn5"]
+[ext_resource type="PackedScene" uid="uid://dmfrqt2kt6q6u" path="res://entity/entity.tscn" id="1_cndls"]
+[ext_resource type="Script" path="res://entity/spells/projectile.gd" id="2_53mj6"]
+[ext_resource type="PackedScene" uid="uid://lk25ykwcgvns" path="res://entity/actor/overlaps/hitbox.tscn" id="3_0wfjp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_junfg"]
 radius = 64.0703
 
-[node name="Projectile" instance=ExtResource("1_seja2")]
+[node name="Projectile" instance=ExtResource("1_cndls")]
 modulate = Color(1, 1, 0.466667, 1)
-script = ExtResource("2_p22fd")
+script = ExtResource("2_53mj6")
 initial_speed = 0.0
 initial_direction = Vector2(0, 0)
+initial_arc = 0.0
+curr_push = 0.0
+curr_angle = 0.0
 
-[node name="Hitbox" parent="." index="2" instance=ExtResource("3_f4rn5")]
+[node name="Hitbox" parent="." index="2" instance=ExtResource("3_0wfjp")]
 collision_layer = 2
 collision_mask = 32
 
@@ -21,6 +24,8 @@ collision_mask = 32
 shape = SubResource("CircleShape2D_junfg")
 
 [node name="ProjectileTimeoutTimer" type="Timer" parent="." index="3"]
+
+[node name="Line2D" type="Line2D" parent="." index="4"]
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="ProjectileTimeoutTimer" to="." method="_on_projectile_timeout_timer_timeout"]

@@ -37,6 +37,32 @@ func _on_unit_detection_zone_body_exited(body):
 	# Remove actor if they have left the targets radius
 	nearby_targetable_units.erase(body)
 
+func get_attach_node(num, target_position, attribute_fields) -> AttachPoint:
+	if attribute_fields.attribute_field_fire_data.attribute_field_fire_mode_type == DataDrivenAbilitySingleton.attribute_field_fire_mode_type.NOVA:
+		return create_nova_attach_point(
+			num,
+			attribute_fields.attribute_field_fire_data.num_to_fire_per_execution
+		)
+		
+	elif attribute_fields.attribute_field_fire_data.attribute_field_fire_mode_type == DataDrivenAbilitySingleton.attribute_field_fire_mode_type.SPREAD:
+		return create_spread_attach_point(
+			target_position,
+			num,
+			attribute_fields.attribute_field_fire_data.num_to_fire_per_execution,
+			attribute_fields.attribute_field_fire_data.angle_between_shots
+		)
+		
+	elif attribute_fields.attribute_field_fire_data.attribute_field_fire_mode_type == DataDrivenAbilitySingleton.attribute_field_fire_mode_type.LINEAR:
+		# Create our projectile and add it to the container for projectiles
+		return create_linear_attach_point(
+			target_position
+		)
+	#TODO: better default return
+	return create_linear_attach_point(
+			target_position
+	)
+
+
 func create_linear_attach_point(dir):
 	var attach_point:AttachPoint = attach_point_scene.instantiate()
 	ability_attach_point.add_child(attach_point)
@@ -48,17 +74,15 @@ func create_linear_attach_point(dir):
 	return attach_point
 	
 func create_nova_attach_point(num, num_required):
-	var angle_rad = (TAU / num_required) * num
-
 	var attach_point:AttachPoint = attach_point_scene.instantiate()
 	ability_attach_point.add_child(attach_point)
+	var angle_rad = (TAU / num_required) * num
 	attach_point.title_label.text = str(num)
 	attach_point.global_position.x = DEADZONE * cos(angle_rad) + self.position.x
 	attach_point.global_position.y = DEADZONE * sin(angle_rad) + self.position.y
 	return attach_point
 
 func create_spread_attach_point(dir, num, num_required, angle_between_shots):
-	
 	var attach_point:AttachPoint = attach_point_scene.instantiate()
 	ability_attach_point.add_child(attach_point)
 	

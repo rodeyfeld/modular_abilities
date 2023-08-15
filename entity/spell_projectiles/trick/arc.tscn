@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckdp4xhta6lad"]
-
-[ext_resource type="PackedScene" uid="uid://c8mtuxcd6tw7n" path="res://entity/spell_projectiles/projectile.tscn" id="1_83udg"]
-[ext_resource type="Script" path="res://entity/spell_projectiles/trick/arc.gd" id="2_26elk"]
-
-[node name="Arc" instance=ExtResource("1_83udg")]
-script = ExtResource("2_26elk")
-
-[editable path="Hitbox"]

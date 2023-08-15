@@ -23,6 +23,7 @@ time_between_execution = 1.0
 num_execution = 1.0
 num_to_fire_per_execution = 6.0
 timeout = 3.0
+arc = 50.0
 
 [sub_resource type="Resource" id="Resource_untnd"]
 script = ExtResource("3_gb83n")
