@@ -24,6 +24,7 @@ enum action_type {
 	DAMAGE,
 	HEAL,
 	LINEAR_PROJECTILE,
+	BEAM_PROJECTILE,
 	AUXILIARY,
 }
 
@@ -63,7 +64,8 @@ enum behavior_flag {
 var action_type_map = {
 	action_type.DAMAGE: "res://ability/action/damage.gd",
 	action_type.LINEAR_PROJECTILE: "res://ability/action/linear_projectile.gd",
-	action_type.AUXILIARY: "res://ability/action/auxiliary.gd",
 	action_type.HEAL: "res://ability/action/heal.gd",
+	action_type.AUXILIARY: "res://ability/action/auxiliary.gd",
+	action_type.BEAM_PROJECTILE: "res://ability/action/beam_projectile.gd",
 	
 }

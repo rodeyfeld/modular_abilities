@@ -9,3 +9,4 @@ class_name AttributeFieldFireData
 @export var num_to_fire_per_execution:float = 1.0
 @export var timeout:float = 3.0
 @export var arc:float = 0.0
+@export var max_distance:float = 0.0

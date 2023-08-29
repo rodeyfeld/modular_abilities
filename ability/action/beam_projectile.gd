@@ -2,15 +2,14 @@ extends BaseAction
 
 const beam_scene = preload("res://entity/spells/beam.tscn")
 
-var speed:float
-var initial_arc:float
+var distance:float
 
 
 func setup(data_param:AbilityActionData):
 	super(data_param)
 
-	speed = self.data.attribute_fields.speed
-	initial_arc = self.data.attribute_fields.attribute_field_fire_data.arc
+	
+	distance = self.data.attribute_fields.attribute_field_fire_data.arc
 
 # TODO: Consider passing this information to the beam speed/direction/position
 # and handle its logic there. 
@@ -34,13 +33,10 @@ func execute(caster_ability:Ability, _target:Actor, target_position:Vector2):
 		beam.global_position = attach_node.global_position
 		
 		# Configure its direction and speed
-		beam.initial_speed = speed
+		beam.distance = distance
 		beam.initial_direction = dir
-		beam.initial_arc = initial_arc
-		# Fire the beam
-		beam.fire(
-			caster_ability.caster,
-			self.data.attribute_fields.attribute_field_fire_data.timeout
-		)
+		beam.caster = caster_ability.caster
+		beam.timeout = self.data.attribute_fields.attribute_field_fire_data.timeout
+
 		# Free the attach node 
 		attach_node.queue_free()

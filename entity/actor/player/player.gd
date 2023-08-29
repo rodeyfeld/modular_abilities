@@ -22,6 +22,10 @@ var abilities = {
 	'4': {
 			'scene': preload("res://ability/custom_abilities/spread_shot.tres"),
 			'ability': null
+	},	
+	'5': {
+			'scene': preload("res://ability/custom_abilities/plasma_beam.tres"),
+			'ability': null
 	},
 }
 

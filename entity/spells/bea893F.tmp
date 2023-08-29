@@ -11,7 +11,6 @@ initial_direction = Vector2(0, 0)
 initial_arc = 0.0
 curr_push = 0.0
 curr_angle = 0.0
-timeout = 0.0
 distance = 0.0
 
 [node name="Line2D" type="Line2D" parent="." index="2"]
