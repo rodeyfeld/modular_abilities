@@ -9,7 +9,7 @@ func setup(data_param:AbilityActionData):
 	super(data_param)
 
 	
-	distance = self.data.attribute_fields.attribute_field_fire_data.arc
+	distance = self.data.attribute_fields.attribute_field_fire_data.max_distance
 
 # TODO: Consider passing this information to the beam speed/direction/position
 # and handle its logic there. 

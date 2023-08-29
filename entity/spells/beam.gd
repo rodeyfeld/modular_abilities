@@ -20,7 +20,8 @@ var point_at_distance_y
 
 func _ready():
 #	$ProjectileTimeoutTimer.call_deferred("start", _timeout)
-	raycast.look_at(initial_direction)
+	raycast.target_position = initial_direction * distance
+#	raycast.look_at(initial_direction)
 	print(raycast.get_collider())
 	
 
