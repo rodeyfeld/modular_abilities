@@ -68,7 +68,6 @@ func create_linear_attach_point(dir):
 	ability_attach_point.add_child(attach_point)
 	#Dickamadirkbombs
 	var angle = self.get_angle_to(dir)
-	print(dir)
 	attach_point.global_position.x = DEADZONE * cos(angle) + self.position.x
 	attach_point.global_position.y = DEADZONE * sin(angle) + self.position.y
 

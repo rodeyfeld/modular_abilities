@@ -37,6 +37,6 @@ func execute(caster_ability:Ability, _target:Actor, target_position:Vector2):
 		beam.initial_direction = dir
 		beam.caster = caster_ability.caster
 		beam.timeout = self.data.attribute_fields.attribute_field_fire_data.timeout
-
+		beam.fire()
 		# Free the attach node 
 		attach_node.queue_free()

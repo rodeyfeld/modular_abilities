@@ -14,20 +14,24 @@ signal projectile_timeout
 #@onready var projectile_timeout_timer = $ProjectileTimeoutTimer
 @onready var raycast:RayCast2D = $RayCast2D
 var caster:Actor
-var point_at_distance_x
-var point_at_distance_y
 @onready var beam_line = $Line2D
 
-func _ready():
-#	$ProjectileTimeoutTimer.call_deferred("start", _timeout)
-	raycast.target_position = initial_direction * distance
-#	raycast.look_at(initial_direction)
-	print(raycast.get_collider())
+
+
+func fire():
+	var end_point = initial_direction * distance
+	await self.ready
+	raycast.target_position = end_point
+	raycast.force_raycast_update()
+	var collision_point = raycast.get_collision_point()
+
+	if collision_point:
+		create_line(to_local(collision_point))
+	else:
+		create_line(end_point)
+
+
+func create_line(end_point):
+	beam_line.add_point(to_local(global_position))
+	beam_line.add_point(end_point)
 	
-
-
-
-func create_line(p_owner):
-	beam_line.add_point(self.position)
-	beam_line.add_point()
-	pass

@@ -29,7 +29,6 @@ func execute(caster_ability:Ability, target:Actor, target_point:Vector2):
 		thinker_container_node.call_deferred("add_child", caster)
 		await caster.ready
 		ability.connect("ability_action_finished", caster.work_complete)
-	print(caster)
 	caster.add_child(ability)
 
 	# Attempt to execute the ability with updated params

@@ -19,10 +19,6 @@ func _ready():
 	curr_push = initial_speed
 
 func _physics_process(_delta):
-#	curr_angle += delta * initial_arc
-#	curr_push -= delta
-#	print(curr_push)
-#	arc_projectile(deg_to_rad(curr_angle), delta)
 	move_and_slide()
 
 func fire(p_owner, _timeout = -1):
@@ -33,14 +29,6 @@ func fire(p_owner, _timeout = -1):
 func on_hit():
 	pass
 
-#new_x = x + distance * Math.Cos(angle_degrees * Math.Pi / 180)
-#new_y = y + distance * Math.Sin(angle_degrees * Math.Pi / 180)
-#func arc_projectile(curr_angle, delta):
-#	var angle = Vector2(initial_speed * cos(curr_angle), -initial_speed * sin(curr_angle))
-#	print(angle)
-#	velocity = initial_speed *  (initial_direction.normalized() * angle) * delta
-#
-#
 func _on_hitbox_area_entered(area):
 	if area.get_parent() != projectile_owner:
 		emit_signal("projectile_hit", area.owner)
