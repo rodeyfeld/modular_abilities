@@ -17,8 +17,6 @@ curr_push = 0.0
 curr_angle = 0.0
 
 [node name="Hitbox" parent="." index="2" instance=ExtResource("3_0wfjp")]
-collision_layer = 2
-collision_mask = 32
 
 [node name="CollisionShape2d" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_junfg")

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dw1vdcgud5v8d"]
+[gd_scene load_steps=6 format=3 uid="uid://dw1vdcgud5v8d"]
 
 [ext_resource type="Script" path="res://entity/spells/beam.gd" id="1_uj1ki"]
 [ext_resource type="PackedScene" uid="uid://dmfrqt2kt6q6u" path="res://entity/entity.tscn" id="1_wb42q"]
 [ext_resource type="Texture2D" uid="uid://c6drur36o4wjf" path="res://icon_repeat.svg" id="3_5oalm"]
 [ext_resource type="PackedScene" uid="uid://lk25ykwcgvns" path="res://entity/actor/overlaps/hitbox.tscn" id="4_2gghf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ns61"]
 
 [node name="Beam" instance=ExtResource("1_wb42q")]
 script = ExtResource("1_uj1ki")
@@ -25,6 +27,10 @@ texture_mode = 1
 
 [node name="Hitbox" parent="." index="3" instance=ExtResource("4_2gghf")]
 
+[node name="CollisionShape2d" parent="Hitbox" index="0"]
+shape = SubResource("CapsuleShape2D_8ns61")
+debug_color = Color(0.862745, 0, 0.862745, 0.419608)
+
 [node name="RayCast2D" type="RayCast2D" parent="." index="4"]
 collision_mask = 32
 collide_with_areas = true
@@ -34,3 +40,5 @@ collide_with_bodies = false
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="BeamTimeoutTimer" to="." method="_on_projectile_timeout_timer_timeout"]
+
+[editable path="Hitbox"]
