@@ -1,11 +1,47 @@
-[gd_scene load_steps=6 format=3 uid="uid://dw1vdcgud5v8d"]
+[gd_scene load_steps=9 format=3 uid="uid://dw1vdcgud5v8d"]
 
 [ext_resource type="Script" path="res://entity/spells/beam.gd" id="1_uj1ki"]
 [ext_resource type="PackedScene" uid="uid://dmfrqt2kt6q6u" path="res://entity/entity.tscn" id="1_wb42q"]
 [ext_resource type="Texture2D" uid="uid://c6drur36o4wjf" path="res://icon_repeat.svg" id="3_5oalm"]
 [ext_resource type="PackedScene" uid="uid://lk25ykwcgvns" path="res://entity/actor/overlaps/hitbox.tscn" id="4_2gghf"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ns61"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3ypg"]
+
+[sub_resource type="Animation" id="Animation_sn27e"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7ee8l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nyea3"]
+_data = {
+"RESET": SubResource("Animation_7ee8l"),
+"fade": SubResource("Animation_sn27e")
+}
 
 [node name="Beam" instance=ExtResource("1_wb42q")]
 script = ExtResource("1_uj1ki")
@@ -28,7 +64,7 @@ texture_mode = 1
 [node name="Hitbox" parent="." index="3" instance=ExtResource("4_2gghf")]
 
 [node name="CollisionShape2d" parent="Hitbox" index="0"]
-shape = SubResource("CapsuleShape2D_8ns61")
+shape = SubResource("RectangleShape2D_r3ypg")
 debug_color = Color(0.862745, 0, 0.862745, 0.419608)
 
 [node name="RayCast2D" type="RayCast2D" parent="." index="4"]
@@ -37,6 +73,11 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="BeamTimeoutTimer" type="Timer" parent="." index="5"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_nyea3")
+}
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="BeamTimeoutTimer" to="." method="_on_projectile_timeout_timer_timeout"]

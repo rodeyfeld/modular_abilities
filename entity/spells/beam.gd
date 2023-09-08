@@ -35,26 +35,34 @@ func fire():
 
 func create_line(end_point):
 	var start_point = self.to_local(self.global_position)
-	var midpoint = self.get_midpoint(start_point, end_point)
-	
-	var angle = fmod((self.get_angle_to(end_point) - PI), (2 * PI))
-	
-	var segment = SegmentShape2D.new()
-	segment.a = start_point
-	segment.b = end_point
-	hitbox_collision_shape.shape = segment
-	
+
 	
 	beam_line.add_point(start_point)
 	beam_line.add_point(end_point)
-
+	
+	for i in beam_line.points.size() - 1:
+		var new_shape = CollisionShape2D.new()
+		$Hitbox.add_child(new_shape)
+		var rect = RectangleShape2D.new()
+		new_shape.position = (beam_line.points[i] + beam_line.points[i + 1]) / 2
+		new_shape.rotation = beam_line.points[i].direction_to(beam_line.points[i + 1]).angle()
+		var length = beam_line.points[i].distance_to(beam_line.points[i + 1])
+		rect.extents = Vector2(length / 2, 10)
+		new_shape.shape = rect
 
 
 func _on_hitbox_area_entered(area):
 	if area.get_parent() != caster:
 		emit_signal("projectile_hit", area.owner)
-		self.queue_free()
+		self._queue_free()
+		
 
 func _on_projectile_timeout_timer_timeout():
 	emit_signal("projectile_timeout", self.global_position)
+	self._queue_free()
+	
+func _queue_free():
+	$AnimationPlayer.play("fade")
+	await $AnimationPlayer.animation_finished
 	self.queue_free()
+	
