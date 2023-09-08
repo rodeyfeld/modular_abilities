@@ -70,7 +70,7 @@ attribute_field_fire_data = SubResource("Resource_kyxyc")
 script = ExtResource("3_3tvx4")
 attribute_fields = SubResource("Resource_4gmru")
 trigger_abilities = Array[ExtResource("1_s4i4v")]([ExtResource("5_u15cv")])
-action_type = 4
+action_type = 5
 target_type = 3
 to_be_removed = false
 

@@ -12,6 +12,8 @@ var basic_abilities = {
 }
 
 
+
+
 func setup():
 	
 	#Nova Spell
@@ -29,16 +31,17 @@ func setup():
 	ability_action_data_0.target_type = DataDrivenAbilitySingleton.target_type.POINT
 	#Setup attribute data 
 	ability_action_data_0.attribute_fields = attribute_data_class.new()
-	ability_action_data_0.attribute_fields.speed = 50
+	ability_action_data_0.attribute_fields.speed = 500
 	#Setup firefield data
 	ability_action_data_0.attribute_fields.attribute_field_fire_data = attribute_field_fire_data_class.new() 
 	ability_action_data_0.attribute_fields.attribute_field_fire_data.time_between_execution = .2
 	ability_action_data_0.attribute_fields.attribute_field_fire_data.num_execution = 3
 	ability_action_data_0.attribute_fields.attribute_field_fire_data.num_to_fire_per_execution = 10
+	ability_action_data_0.attribute_fields.attribute_field_fire_data.attribute_field_fire_mode_type = DataDrivenAbilitySingleton.attribute_field_fire_mode_type.NOVA
 	ability_action_data_0.attribute_fields.attribute_field_fire_data.timeout = 3
 	ability_event_data_0.actions.append(ability_action_data_0)
 	data_driven_ability.ability_event_data.append(ability_event_data_0)
-	print(data_driven_ability)
+	
 	basic_abilities['nova'] = data_driven_ability.parse(data_driven_ability)
 	
 	

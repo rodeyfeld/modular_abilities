@@ -19,6 +19,7 @@ func execute(caster_ability:Ability, _target:Actor, target_position:Vector2):
 #	var firing_mode:DataDrivenAbilitySingleton.attribute_field_fire_mode_type = self.data.attribute_fields.attribute_field_fire_data.attribute_field_fire_mode_type
 
 	for num in range(self.data.attribute_fields.attribute_field_fire_data.num_to_fire_per_execution):
+		print(num)
 		var dir:Vector2 = Vector2.ZERO
 		var projectile:Projectile = projectile_scene.instantiate()
 		var projectile_container_node = caster_ability.caster.get_tree().get_root().get_node("World/ProjectileContainer")

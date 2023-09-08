@@ -107,19 +107,19 @@ num_execution = 1.0
 num_to_fire_per_execution = 1.0
 timeout = 5.0
 arc = 0.0
-max_distance = 0.0
+max_distance = 100.0
 
 [sub_resource type="Resource" id="Resource_63iw5"]
 script = ExtResource("3_l1icg")
 amount = 0.0
-speed = 200.0
+speed = 0.0
 attribute_field_fire_data = SubResource("Resource_64i2m")
 
 [sub_resource type="Resource" id="Resource_gfw2v"]
 script = ExtResource("4_lumyo")
 attribute_fields = SubResource("Resource_63iw5")
 trigger_abilities = Array[ExtResource("1_faewn")]([])
-action_type = 3
+action_type = 4
 target_type = 4
 to_be_removed = false
 
@@ -173,7 +173,7 @@ ability_event_data = Array[ExtResource("5_m0owl")]([SubResource("Resource_md2h4"
 script = ExtResource("4_lumyo")
 attribute_fields = SubResource("Resource_vqnlt")
 trigger_abilities = Array[ExtResource("1_faewn")]([SubResource("Resource_edw2g")])
-action_type = 3
+action_type = 5
 target_type = 2
 to_be_removed = false
 
