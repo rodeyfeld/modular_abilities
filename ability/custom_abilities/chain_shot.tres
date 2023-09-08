@@ -173,7 +173,7 @@ ability_event_data = Array[ExtResource("5_m0owl")]([SubResource("Resource_md2h4"
 script = ExtResource("4_lumyo")
 attribute_fields = SubResource("Resource_vqnlt")
 trigger_abilities = Array[ExtResource("1_faewn")]([SubResource("Resource_edw2g")])
-action_type = 4
+action_type = 3
 target_type = 2
 to_be_removed = false
 

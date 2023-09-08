@@ -55,8 +55,7 @@ func _on_hitbox_area_entered(area):
 	if area.get_parent() != caster:
 		emit_signal("projectile_hit", area.owner)
 		self._queue_free()
-		
-
+	
 func _on_projectile_timeout_timer_timeout():
 	emit_signal("projectile_timeout", self.global_position)
 	self._queue_free()
