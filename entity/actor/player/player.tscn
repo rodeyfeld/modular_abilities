@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cack2j01rqya7"]
+[gd_scene load_steps=6 format=3 uid="uid://cack2j01rqya7"]
 
 [ext_resource type="PackedScene" uid="uid://dlhhp4yta78i6" path="res://entity/actor/actor.tscn" id="1_f0ouo"]
 [ext_resource type="Script" path="res://entity/actor/player/player.gd" id="2_53o15"]
@@ -8,6 +8,9 @@ radius = 340.982
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8y6xy"]
 radius = 74.0608
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5030p"]
+radius = 78.0256
 
 [node name="Player" instance=ExtResource("1_f0ouo")]
 collision_layer = 1
@@ -24,6 +27,9 @@ shape = SubResource("CircleShape2D_8y6xy")
 
 [node name="Sprite2d" parent="." index="3"]
 modulate = Color(0.262745, 0.541176, 1, 1)
+
+[node name="CollisionShape2D" parent="TargetableZone" index="0"]
+shape = SubResource("CircleShape2D_5030p")
 
 [editable path="AttachPoint"]
 [editable path="UnitDetectionZone"]

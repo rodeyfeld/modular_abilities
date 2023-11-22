@@ -30,12 +30,14 @@ max_distance = 0.0
 script = ExtResource("3_gb83n")
 amount = 0.0
 speed = 200.0
+cooldown = 0.0
 attribute_field_fire_data = SubResource("Resource_cgh5f")
 
 [sub_resource type="Resource" id="Resource_7o6k7"]
 script = ExtResource("4_ctx2m")
 attribute_fields = SubResource("Resource_untnd")
 trigger_abilities = Array[ExtResource("7_wwgey")]([])
+persistent_abilities = Array[ExtResource("7_wwgey")]([])
 action_type = 3
 target_type = 3
 to_be_removed = false
@@ -45,18 +47,18 @@ script = ExtResource("5_juvqu")
 event_type = 2
 actions = Array[ExtResource("4_ctx2m")]([SubResource("Resource_7o6k7")])
 modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
-repeat_event_num = 0
-time_between_event_repeat = 0
 
 [sub_resource type="Resource" id="Resource_rx12g"]
 script = ExtResource("3_gb83n")
 amount = 10.0
 speed = 0.0
+cooldown = 0.0
 
 [sub_resource type="Resource" id="Resource_p3q30"]
 script = ExtResource("4_ctx2m")
 attribute_fields = SubResource("Resource_rx12g")
 trigger_abilities = Array[ExtResource("7_wwgey")]([])
+persistent_abilities = Array[ExtResource("7_wwgey")]([])
 action_type = 1
 target_type = 2
 to_be_removed = false
@@ -66,8 +68,6 @@ script = ExtResource("5_juvqu")
 event_type = 3
 actions = Array[ExtResource("4_ctx2m")]([SubResource("Resource_p3q30")])
 modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
-repeat_event_num = 0
-time_between_event_repeat = 0
 
 [resource]
 script = ExtResource("7_wwgey")

@@ -1,7 +1,6 @@
 extends BaseAction
 
 var ability:Ability
-var data_driven_ability_script = load("res://ability/data_driven_ability.gd")
 var thinker_scene = load("res://entity/actor/thinker/thinker.tscn")
 # Auxiliary actions are actions that contain another ability to be fired 
 # when the event register is called

@@ -64,12 +64,12 @@ func perform_actions(event_type:DataDrivenAbilitySingleton.event_types):
 	
 	# For every action in this register, execute the action based on its targeting
 	for action in actions:
-		var action_execution_num_timer:Timer = Timer.new()
-		action.action_execution_num_timer = action_execution_num_timer
-		add_child(action_execution_num_timer)
+		var execution_iteration_timer:Timer = Timer.new()
+		action.execution_iteration_timer = execution_iteration_timer
+		add_child(execution_iteration_timer)
 		# TODO: Recieve a signal from the actions and call further processing
 		if action.data.target_type == DataDrivenAbilitySingleton.target_type.CASTER:
-			action.execute_all(self, caster, target_position)
+			action.execute_all(self, caster, null)
 		elif action.data.target_type == DataDrivenAbilitySingleton.target_type.POINT:
 			action.execute_all(self, null, target_position)
 		elif action.data.target_type == DataDrivenAbilitySingleton.target_type.TARGET:
