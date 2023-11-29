@@ -13,7 +13,7 @@ mask_flag_type = 1
 behavior_flags = 1
 name = "ice nova"
 description = "several nodes in nova mode"
-cooldown = 0.0
+cooldown = 3.0
 
 [sub_resource type="Resource" id="Resource_jj0hn"]
 script = ExtResource("2_hfcba")

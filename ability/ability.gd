@@ -4,7 +4,7 @@ class_name Ability
 
 @onready var cooldown_timer = $CooldownTimer
 signal ability_action_finished
-
+var cooldown_ready = true
 var ability_data:AbilityData
 var caster:Actor
 var targets:Dictionary
@@ -38,26 +38,28 @@ func execute(caster_param:Actor, target_dict_param:Dictionary):
 	# This is called on ability cast. The caster_param is updated to the current
 	# caster, and the target_dict_param is passed a unit and position. These
 	# will be used based on the action's targeting enum
-	caster = caster_param
-	targets = target_dict_param
-	is_running = true
-	target_unit = target_dict_param['target_unit']
-	target_position = target_dict_param['target_position']
-	
-	# First we check for ON_ABILITY_START action events. These will be 
-	# events that should happen regardless of interruptions, such as mana costs
-	# and triggering global cooldowns
-	if event_register[DataDrivenAbilitySingleton.event_types.ON_ABILITY_START] != []:
-		perform_actions(DataDrivenAbilitySingleton.event_types.ON_ABILITY_START)
-	# If it is a channelled spell, perform actions related to movement reduction
-	# and locking out other spells
-	if channelled:
-		pass
-	# Otherwise, proceed to events contained in ON_SPELL_START
-	else:
-		on_spell_start()
+	if cooldown_ready:
+		cooldown_ready = false
+		cooldown_timer.start()
+		caster = caster_param
+		targets = target_dict_param
+		is_running = true
+		target_unit = target_dict_param['target_unit']
+		target_position = target_dict_param['target_position']
+		
+		# First we check for ON_ABILITY_START action events. These will be 
+		# events that should happen regardless of interruptions, such as mana costs
+		# and triggering global cooldowns
+		if event_register[DataDrivenAbilitySingleton.event_types.ON_ABILITY_START] != []:
+			perform_actions(DataDrivenAbilitySingleton.event_types.ON_ABILITY_START)
+		# If it is a channelled spell, perform actions related to movement reduction
+		# and locking out other spells
+		if channelled:
+			pass
+		# Otherwise, proceed to events contained in ON_SPELL_START
+		else:
+			on_spell_start()
 
-	
 func perform_actions(event_type:DataDrivenAbilitySingleton.event_types):
 	# Takes an event_type enum. This is used to get the arrry of AbilityEventData 
 	var actions = event_register[event_type]
@@ -77,11 +79,10 @@ func perform_actions(event_type:DataDrivenAbilitySingleton.event_types):
 		elif action.data.target_type == DataDrivenAbilitySingleton.target_type.NEAREST_ENEMY:
 			if len(target_unit.get_nearby_targets()) > 0:
 				action.execute_all(self, target_unit.get_nearby_targets()[0], target_unit.get_nearby_targets()[0].position)
-				
+
 # EVENT REGISTER: ON_SPELL_START
 func on_spell_start():
 	# Start the cooldown for this ability
-	cooldown_timer.start()
 	is_cast = true
 	# Execute all actions in this event register
 	perform_actions(DataDrivenAbilitySingleton.event_types.ON_SPELL_START)
@@ -102,3 +103,7 @@ func on_projectile_timeout(target_pos:Vector2):
 		perform_actions(DataDrivenAbilitySingleton.event_types.ON_PROJECTILE_TIMEOUT)
 
 	
+
+
+func _on_cooldown_timer_timeout():
+	cooldown_ready = true

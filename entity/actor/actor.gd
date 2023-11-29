@@ -6,7 +6,6 @@ class_name Actor
 
 @onready var detection_zone:Area2D = $UnitDetectionZone
 @onready var ability_attach_point:Node2D = $AttachPoint
-
 var attach_point_scene = load("res://entity/actor/attach_point.tscn")
 var health:int
 var title:String
@@ -14,18 +13,14 @@ var nearby_targetable_units = []
 var DEADZONE:float = 100.0
 var abilities = {}
 var input_controller = null
+
+
 func update_health(amount, _title):
 	# Any time this function called, it will update the health and provide 
 	# a title for what caused it
 	print("HEALTH_BEFORE: ", health)
 	health += amount
 	print("HEALTH_AFTER: ", health)
-
-func _physics_process(delta):
-	
-	if input_controller:
-		
-		input_controller.update(self)
 
 func get_target():
 	pass
@@ -110,6 +105,3 @@ func create_spread_attach_point(dir, num, num_required, angle_between_shots):
 	
 	return attach_point
 
-
-func _on_targetable_zone_input_event(viewport, event, shape_idx):
-	print(event)

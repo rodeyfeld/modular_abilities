@@ -2,15 +2,16 @@ extends Actor
 
 class_name Player
 
-@onready var ability_offensive_attach_point:Marker2D = $AttachPoint/AbilityOffensiveAttachPoint
 const basic_spells_class = preload("res://ability/custom_abilities/build_default_spells.gd")
+const data_driven_ability_script = preload("res://ability/data_driven_ability.gd")
+
+@onready var ability_offensive_attach_point:Marker2D = $AttachPoint/AbilityOffensiveAttachPoint
 @onready var player_controller_script = preload("res://controllers/player_controller.gd")
-var data_driven_ability_script = load("res://ability/data_driven_ability.gd")
 
 var test_spell = null
 
 func _ready():
-	input_controller = player_controller_script.new()
+	controller.controller_script = player_controller_script.new()
 	abilities = {
 		'1': {
 				'scene': preload("res://ability/custom_abilities/fyreball.tres"),
@@ -45,7 +46,7 @@ func _physics_process(delta):
 	var distance = 100
 	ability_offensive_attach_point.global_position.x = distance * cos(angle) + self.position.x
 	ability_offensive_attach_point.global_position.y = distance * sin(angle) + self.position.y
-	input_controller.update(self)
+	super._physics_process(delta)
 
 
 

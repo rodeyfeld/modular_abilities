@@ -24,7 +24,6 @@ collision_mask = 0
 [connection signal="area_entered" from="UnitDetectionZone" to="." method="_on_unit_detection_zone_area_entered"]
 [connection signal="body_entered" from="UnitDetectionZone" to="." method="_on_unit_detection_zone_body_entered"]
 [connection signal="body_exited" from="UnitDetectionZone" to="." method="_on_unit_detection_zone_body_exited"]
-[connection signal="input_event" from="TargetableZone" to="." method="_on_targetable_zone_input_event"]
 
 [editable path="AttachPoint"]
 [editable path="UnitDetectionZone"]

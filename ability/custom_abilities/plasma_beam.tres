@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="DataDrivenAbility" load_steps=15 format=3 uid="uid://byncoldvwjedm"]
+[gd_resource type="Resource" script_class="DataDrivenAbility" load_steps=16 format=3 uid="uid://byncoldvwjedm"]
 
 [ext_resource type="Script" path="res://ability/ability_data.gd" id="1_82y4g"]
 [ext_resource type="Script" path="res://ability/fields/attribute_field_fire_data.gd" id="2_q4sgn"]
 [ext_resource type="Script" path="res://ability/fields/attribute_data.gd" id="3_42lap"]
 [ext_resource type="Script" path="res://ability/ability_action_data.gd" id="4_d1bq6"]
+[ext_resource type="Resource" uid="uid://ct3a58duv0edx" path="res://ability/custom_abilities/ice_nova.tres" id="4_oo72f"]
 [ext_resource type="Script" path="res://ability/ability_event_data.gd" id="5_hyscn"]
 [ext_resource type="Script" path="res://ability/data_driven_ability.gd" id="6_alv7v"]
 
@@ -37,7 +38,7 @@ attribute_field_fire_data = SubResource("Resource_cgh5f")
 script = ExtResource("4_d1bq6")
 attribute_fields = SubResource("Resource_untnd")
 trigger_abilities = Array[ExtResource("6_alv7v")]([])
-persistent_abilities = Array[ExtResource("6_alv7v")]([])
+persistent_abilities = Array[ExtResource("6_alv7v")]([ExtResource("4_oo72f")])
 action_type = 4
 target_type = 3
 to_be_removed = false

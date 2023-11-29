@@ -10,6 +10,7 @@ func setup(data_param:AbilityActionData):
 	super(data_param)
 
 	speed = self.data.attribute_fields.speed
+	
 	initial_arc = self.data.attribute_fields.attribute_field_fire_data.arc
 
 # TODO: Consider passing this information to the projectile speed/direction/position

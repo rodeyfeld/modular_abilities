@@ -16,11 +16,12 @@ signal projectile_timeout
 @onready var beam_timeout_timer:Timer = $BeamTimeoutTimer
 var caster:Actor
 @onready var beam_line = $Line2D
+var thinker_scene = preload("res://entity/actor/thinker/thinker.tscn")
 
 func get_midpoint(v1:Vector2, v2:Vector2) -> Vector2:
 	return Vector2(((v1.x + v2.x) / 2), ((v1.y + v2.y) / 2))
 	
-func fire():
+func fire(persistent_abilities):
 	var end_point = initial_direction * distance
 	await self.ready
 	beam_timeout_timer.start()
@@ -32,6 +33,12 @@ func fire():
 		create_line(to_local(collision_point))
 	else:
 		create_line(end_point)
+
+	for persistent_ability in persistent_abilities:
+		var thinker:Thinker = thinker_scene.instantiate()
+		thinker.abilities[persistent_ability.get_instance_id()] = persistent_ability
+		add_child(thinker)
+		
 
 func create_line(end_point):
 	var start_point = self.to_local(self.global_position)

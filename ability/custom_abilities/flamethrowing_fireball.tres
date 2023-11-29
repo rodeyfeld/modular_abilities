@@ -14,7 +14,7 @@ mask_flag_type = 1
 behavior_flags = 1
 name = ""
 description = ""
-cooldown = 0.0
+cooldown = 3.0
 
 [sub_resource type="Resource" id="Resource_cgh5f"]
 script = ExtResource("2_ihwyi")
@@ -31,6 +31,7 @@ max_distance = 0.0
 script = ExtResource("3_peh6p")
 amount = 0.0
 speed = 100.0
+cooldown = 0.0
 attribute_field_fire_data = SubResource("Resource_cgh5f")
 
 [sub_resource type="Resource" id="Resource_8mdkv"]
@@ -41,6 +42,7 @@ ability_event_data = Array[ExtResource("6_5wrik")]([])
 script = ExtResource("4_ssfdu")
 attribute_fields = SubResource("Resource_untnd")
 trigger_abilities = Array[ExtResource("5_jy6am")]([SubResource("Resource_8mdkv")])
+persistent_abilities = Array[ExtResource("5_jy6am")]([])
 action_type = 3
 target_type = 3
 to_be_removed = false
@@ -48,6 +50,7 @@ to_be_removed = false
 [sub_resource type="Resource" id="Resource_ysbth"]
 script = ExtResource("4_ssfdu")
 trigger_abilities = Array[ExtResource("5_jy6am")]([])
+persistent_abilities = Array[ExtResource("5_jy6am")]([])
 action_type = 5
 target_type = 0
 to_be_removed = false
@@ -57,8 +60,6 @@ script = ExtResource("6_5wrik")
 event_type = 2
 actions = Array[ExtResource("4_ssfdu")]([SubResource("Resource_7o6k7"), SubResource("Resource_ysbth")])
 modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
-repeat_event_num = 0
-time_between_event_repeat = 0
 
 [sub_resource type="Resource" id="Resource_kyxyc"]
 script = ExtResource("2_ihwyi")
@@ -75,12 +76,14 @@ max_distance = 0.0
 script = ExtResource("3_peh6p")
 amount = 0.0
 speed = 0.0
+cooldown = 0.0
 attribute_field_fire_data = SubResource("Resource_kyxyc")
 
 [sub_resource type="Resource" id="Resource_u0xm6"]
 script = ExtResource("4_ssfdu")
 attribute_fields = SubResource("Resource_4gmru")
 trigger_abilities = Array[ExtResource("5_jy6am")]([ExtResource("7_ruf54")])
+persistent_abilities = Array[ExtResource("5_jy6am")]([])
 action_type = 5
 target_type = 3
 to_be_removed = false
@@ -90,8 +93,6 @@ script = ExtResource("6_5wrik")
 event_type = 4
 actions = Array[ExtResource("4_ssfdu")]([SubResource("Resource_u0xm6")])
 modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
-repeat_event_num = 0
-time_between_event_repeat = 0
 
 [resource]
 script = ExtResource("5_jy6am")
