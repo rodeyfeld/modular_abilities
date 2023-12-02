@@ -11,7 +11,6 @@ var health:int
 var title:String
 var nearby_targetable_units = []
 var DEADZONE:float = 100.0
-var abilities = {}
 var input_controller = null
 
 

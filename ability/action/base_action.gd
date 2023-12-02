@@ -14,11 +14,7 @@ func setup(data_param:AbilityActionData):
 
 
 func execute_all(_caster_ability:Ability, _target:Actor, _target_point:Vector2):
-#	if self.data.persistent_abilities:
-#		for _persistent_ability in self.data.persistent_abilities:
-#			var data_driven_ability = data_driven_ability_script.new()
-#			var abiliity:Ability = data_driven_ability.parse(_persistent_ability)
-#			abiliity.execute()
+
 
 	for num in range(self.data.attribute_fields.attribute_field_fire_data.num_execution):
 		execution_iteration_timer.start(self.data.attribute_fields.attribute_field_fire_data.time_between_execution)

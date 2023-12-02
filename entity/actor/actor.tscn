@@ -11,6 +11,9 @@ script = ExtResource("2_xdf50")
 
 [node name="AttachPoint" parent="." index="0" instance=ExtResource("2_ge53c")]
 
+[node name="Label" parent="AttachPoint" index="1"]
+metadata/_edit_use_anchors_ = true
+
 [node name="UnitDetectionZone" parent="." index="1" instance=ExtResource("4_1vjmr")]
 
 [node name="Hurtbox" parent="." index="2" instance=ExtResource("5_7ue1i")]

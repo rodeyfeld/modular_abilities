@@ -34,16 +34,18 @@ func fire(persistent_abilities):
 	else:
 		create_line(end_point)
 
-	for persistent_ability in persistent_abilities:
-		var thinker:Thinker = thinker_scene.instantiate()
-		thinker.abilities[persistent_ability.get_instance_id()] = persistent_ability
-		add_child(thinker)
+	#for persistent_ability in persistent_abilities:
+	for i in range(len(persistent_abilities)):
 		
+		var thinker:Thinker = thinker_scene.instantiate()
+		thinker.abilities[i] = persistent_abilities[i]
+		
+		add_child(thinker)
+
 
 func create_line(end_point):
 	var start_point = self.to_local(self.global_position)
 
-	
 	beam_line.add_point(start_point)
 	beam_line.add_point(end_point)
 	

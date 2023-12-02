@@ -10,10 +10,8 @@ func setup(data_param:AbilityActionData):
 	super(data_param)
 
 	
-	var data_driven_ability = data_driven_ability_script.new()
+	
 	var data_driven_persistent_abilities = self.data.persistent_abilities
-	for data_driven_persistent_ability in data_driven_persistent_abilities:
-		persistent_abilities.append(data_driven_ability.parse(data_driven_persistent_ability))
 	distance = self.data.attribute_fields.attribute_field_fire_data.max_distance
 
 # TODO: Consider passing this information to the beam speed/direction/position
@@ -42,6 +40,6 @@ func execute(caster_ability:Ability, _target:Actor, target_position:Vector2):
 		beam.initial_direction = dir
 		beam.caster = caster_ability.caster
 		beam.timeout = self.data.attribute_fields.attribute_field_fire_data.timeout
-		beam.fire(persistent_abilities)
+		beam.fire(self.data.persistent_abilities)
 		# Free the attach node 
 		attach_node.queue_free()

@@ -3,7 +3,7 @@ extends Actor
 class_name Player
 
 const basic_spells_class = preload("res://ability/custom_abilities/build_default_spells.gd")
-const data_driven_ability_script = preload("res://ability/data_driven_ability.gd")
+
 
 @onready var ability_offensive_attach_point:Marker2D = $AttachPoint/AbilityOffensiveAttachPoint
 @onready var player_controller_script = preload("res://controllers/player_controller.gd")
