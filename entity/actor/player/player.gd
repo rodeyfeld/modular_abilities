@@ -32,6 +32,10 @@ func _ready():
 		'5': {
 				'scene': preload("res://ability/custom_abilities/plasma_beam.tres"),
 				'ability': null
+		},		
+		'6': {
+				'scene': preload("res://ability/custom_abilities/flamethrowing_fireball.tres"),
+				'ability': null
 		},
 	}
 	title = "player"

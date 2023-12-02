@@ -32,7 +32,7 @@ func execute(caster_ability:Ability, _target:Actor, target_position:Vector2):
 		beam.connect("projectile_timeout", caster_ability.on_projectile_timeout)
 		var attach_node:AttachPoint = caster_ability.caster.get_attach_node(num, target_position, self.data.attribute_fields)
 		beam.global_position = attach_node.global_position
-		
+
 		# Configure its direction and speed
 		beam.distance = distance
 		beam.initial_direction = target_position

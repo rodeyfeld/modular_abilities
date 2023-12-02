@@ -11,6 +11,7 @@ class_name Projectile
 signal projectile_hit
 signal projectile_timeout
 @onready var projectile_timeout_timer = $ProjectileTimeoutTimer
+var thinker_scene = preload("res://entity/actor/thinker/thinker.tscn")
 var projectile_owner:Actor
 var point_at_distance_x
 var point_at_distance_y
@@ -21,10 +22,21 @@ func _ready():
 func _physics_process(_delta):
 	move_and_slide()
 
-func fire(p_owner, _timeout = -1):
+func fire(p_owner, _timeout = -1, persistent_abilities=[]):
+	await self.ready
 	projectile_owner = p_owner 
 	$ProjectileTimeoutTimer.call_deferred("start", _timeout)
 	velocity = initial_direction.normalized() * initial_speed
+
+	#for persistent_ability in persistent_abilities:
+	for i in range(len(persistent_abilities)):
+		var thinker:Thinker = thinker_scene.instantiate()
+		var thinker_container_node = get_tree().get_root().get_node("World/ThinkerContainer")
+		thinker.abilities[i] = persistent_abilities[i]
+		thinker.global_position = self.global_position
+		#get_midpoint(beam_line.points[0], beam_line.points[1])
+		thinker_container_node.call_deferred("add_child", thinker)
+
 
 func on_hit():
 	pass

@@ -41,7 +41,8 @@ func execute(caster_ability:Ability, _target:Actor, target_position:Vector2):
 		# Fire the projectile
 		projectile.fire(
 			caster_ability.caster,
-			self.data.attribute_fields.attribute_field_fire_data.timeout
+			self.data.attribute_fields.attribute_field_fire_data.timeout,
+			self.data.persistent_abilities
 		)
 		# Free the attach node 
 		#attach_node.queue_free()
