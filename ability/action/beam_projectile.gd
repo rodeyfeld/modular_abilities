@@ -31,12 +31,11 @@ func execute(caster_ability:Ability, _target:Actor, target_position:Vector2):
 		beam.connect("projectile_hit", caster_ability.on_projectile_hit)
 		beam.connect("projectile_timeout", caster_ability.on_projectile_timeout)
 		var attach_node:AttachPoint = caster_ability.caster.get_attach_node(num, target_position, self.data.attribute_fields)
-		dir = attach_node.position
 		beam.global_position = attach_node.global_position
 		
 		# Configure its direction and speed
 		beam.distance = distance
-		beam.initial_direction = dir
+		beam.initial_direction = target_position
 		beam.caster = caster_ability.caster
 		beam.timeout = self.data.attribute_fields.attribute_field_fire_data.timeout
 		beam.fire(self.data.persistent_abilities)

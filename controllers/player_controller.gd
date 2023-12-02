@@ -11,7 +11,6 @@ func update(actor):
 		for ability in abilities:
 		
 			if Input.is_action_just_pressed(ability):
-				print(actor.get_global_mouse_position())
 				if abilities[ability]['ability'].cooldown_timer.time_left <= 0:
 					abilities[ability]['ability'].execute(
 						actor,
