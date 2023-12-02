@@ -44,4 +44,4 @@ func execute(caster_ability:Ability, _target:Actor, target_position:Vector2):
 			self.data.attribute_fields.attribute_field_fire_data.timeout
 		)
 		# Free the attach node 
-		attach_node.queue_free()
+		#attach_node.queue_free()

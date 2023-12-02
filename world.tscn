@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://7lugd8uxk4km"]
+[gd_scene load_steps=5 format=3 uid="uid://7lugd8uxk4km"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_6skk4"]
 [ext_resource type="PackedScene" uid="uid://cack2j01rqya7" path="res://entity/actor/player/player.tscn" id="1_ypvuq"]
 [ext_resource type="PackedScene" uid="uid://s4ks1eno3d5d" path="res://entity/actor/enemy/enemy.tscn" id="2_45aac"]
+[ext_resource type="Texture2D" uid="uid://tkvb54ag8h7k" path="res://icon.svg" id="4_su027"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_6skk4")
@@ -36,3 +37,9 @@ collision_mask = 1
 
 [node name="Camera2D" type="Camera2D" parent="PlayerContainer/Player"]
 zoom = Vector2(0.5, 0.5)
+
+[node name="MouseIndicator" type="Sprite2D" parent="."]
+modulate = Color(0.937255, 0, 0.866667, 1)
+self_modulate = Color(1, 1, 1, 0.556863)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_su027")

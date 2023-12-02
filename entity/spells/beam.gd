@@ -22,7 +22,8 @@ func get_midpoint(v1:Vector2, v2:Vector2) -> Vector2:
 	return Vector2(((v1.x + v2.x) / 2), ((v1.y + v2.y) / 2))
 
 func fire(persistent_abilities):
-	var end_point = initial_direction * distance
+	
+	var end_point = to_local(initial_direction) * distance
 	await self.ready
 	beam_timeout_timer.start()
 	raycast.target_position = end_point
@@ -36,11 +37,12 @@ func fire(persistent_abilities):
 
 	#for persistent_ability in persistent_abilities:
 	for i in range(len(persistent_abilities)):
-		
+		var thinker_container_node = get_tree().get_root().get_node("World/ThinkerContainer")
 		var thinker:Thinker = thinker_scene.instantiate()
+		print("INIT_DIR", initial_direction)
 		thinker.abilities[i] = persistent_abilities[i]
-		
-		add_child(thinker)
+		thinker.global_position = get_midpoint(beam_line.points[0], end_point)
+		thinker_container_node.call_deferred("add_child", thinker)
 
 
 func create_line(end_point):

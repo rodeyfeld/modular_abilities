@@ -20,7 +20,6 @@ func execute(caster_ability:Ability, target:Actor, target_point:Vector2):
 			caster = target
 			caster.add_child(ability)
 			ability.execute(caster, {'target_unit':target, 'target_position': target_point})
-			ability.connect("ability_action_finished", caster.work_complete)
 		else:
 			var thinker_container_node = caster_ability.caster.get_tree().get_root().get_node("World/ThinkerContainer")
 			var thinker:Thinker = thinker_scene.instantiate()

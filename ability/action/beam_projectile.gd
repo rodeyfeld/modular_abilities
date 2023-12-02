@@ -11,7 +11,6 @@ func setup(data_param:AbilityActionData):
 
 	
 	
-	var data_driven_persistent_abilities = self.data.persistent_abilities
 	distance = self.data.attribute_fields.attribute_field_fire_data.max_distance
 
 # TODO: Consider passing this information to the beam speed/direction/position

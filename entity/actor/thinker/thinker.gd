@@ -12,7 +12,6 @@ func _ready():
 		
 		abilities[ability] = data_driven_ability.parse(abilities[ability])
 		add_child(abilities[ability])
-		
 		abilities[ability].connect("ability_action_finished", work_complete)
 	# Configure deadzone for mouse
 #	var angle = self.get_angle_to(get_global_mouse_position())

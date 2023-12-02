@@ -71,7 +71,7 @@ func perform_actions(event_type:DataDrivenAbilitySingleton.event_types):
 		add_child(execution_iteration_timer)
 		# TODO: Recieve a signal from the actions and call further processing
 		if action.data.target_type == DataDrivenAbilitySingleton.target_type.CASTER:
-			action.execute_all(self, caster, null)
+			action.execute_all(self, caster, caster.global_position)
 		elif action.data.target_type == DataDrivenAbilitySingleton.target_type.POINT:
 			action.execute_all(self, null, target_position)
 		elif action.data.target_type == DataDrivenAbilitySingleton.target_type.TARGET:

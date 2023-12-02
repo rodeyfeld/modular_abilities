@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="DataDrivenAbility" load_steps=16 format=3 uid="uid://byncoldvwjedm"]
+[gd_resource type="Resource" script_class="DataDrivenAbility" load_steps=21 format=3 uid="uid://byncoldvwjedm"]
 
 [ext_resource type="Script" path="res://ability/ability_data.gd" id="1_82y4g"]
 [ext_resource type="Script" path="res://ability/fields/attribute_field_fire_data.gd" id="2_q4sgn"]
 [ext_resource type="Script" path="res://ability/fields/attribute_data.gd" id="3_42lap"]
 [ext_resource type="Script" path="res://ability/ability_action_data.gd" id="4_d1bq6"]
-[ext_resource type="Resource" uid="uid://ct3a58duv0edx" path="res://ability/custom_abilities/ice_nova.tres" id="4_oo72f"]
 [ext_resource type="Script" path="res://ability/ability_event_data.gd" id="5_hyscn"]
 [ext_resource type="Script" path="res://ability/data_driven_ability.gd" id="6_alv7v"]
 
@@ -22,7 +21,7 @@ attribute_field_fire_mode_type = 2
 angle_between_shots = 10.0
 time_between_execution = 0.0
 num_execution = 1.0
-num_to_fire_per_execution = 3.0
+num_to_fire_per_execution = 1.0
 timeout = 3.0
 arc = 0.0
 max_distance = 10.0
@@ -34,11 +33,57 @@ speed = 200.0
 cooldown = 0.0
 attribute_field_fire_data = SubResource("Resource_cgh5f")
 
+[sub_resource type="Resource" id="Resource_8tla8"]
+script = ExtResource("1_82y4g")
+mask_flag_type = 1
+behavior_flags = 1
+name = "ice nova"
+description = "several nodes in nova mode"
+cooldown = 3.0
+
+[sub_resource type="Resource" id="Resource_jj0hn"]
+script = ExtResource("2_q4sgn")
+attribute_field_fire_mode_type = 1
+angle_between_shots = 0.0
+time_between_execution = 0.2
+num_execution = 1.0
+num_to_fire_per_execution = 4.0
+timeout = 3.0
+arc = 0.0
+max_distance = 0.0
+
+[sub_resource type="Resource" id="Resource_wgylr"]
+script = ExtResource("3_42lap")
+amount = 0.0
+speed = 50.0
+cooldown = 0.0
+attribute_field_fire_data = SubResource("Resource_jj0hn")
+
+[sub_resource type="Resource" id="Resource_tkiwy"]
+script = ExtResource("4_d1bq6")
+attribute_fields = SubResource("Resource_wgylr")
+trigger_abilities = Array[ExtResource("6_alv7v")]([])
+persistent_abilities = Array[ExtResource("6_alv7v")]([])
+action_type = 3
+target_type = 1
+to_be_removed = false
+
+[sub_resource type="Resource" id="Resource_08edy"]
+script = ExtResource("5_hyscn")
+event_type = 2
+actions = Array[ExtResource("4_d1bq6")]([SubResource("Resource_tkiwy")])
+modifiers = Array[Resource("res://ability/ability_modifier_data.gd")]([])
+
+[sub_resource type="Resource" id="Resource_kpors"]
+script = ExtResource("6_alv7v")
+ability_data = SubResource("Resource_8tla8")
+ability_event_data = Array[ExtResource("5_hyscn")]([SubResource("Resource_08edy")])
+
 [sub_resource type="Resource" id="Resource_7o6k7"]
 script = ExtResource("4_d1bq6")
 attribute_fields = SubResource("Resource_untnd")
 trigger_abilities = Array[ExtResource("6_alv7v")]([])
-persistent_abilities = Array[ExtResource("6_alv7v")]([ExtResource("4_oo72f")])
+persistent_abilities = Array[ExtResource("6_alv7v")]([SubResource("Resource_kpors")])
 action_type = 4
 target_type = 3
 to_be_removed = false

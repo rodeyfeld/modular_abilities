@@ -70,7 +70,6 @@ func get_attach_node(num, target_position, attribute_fields) -> AttachPoint:
 func create_linear_attach_point(dir):
 	var attach_point:AttachPoint = attach_point_scene.instantiate()
 	ability_attach_point.add_child(attach_point)
-	#Dickamadirkbombs
 	var angle = self.get_angle_to(dir)
 	attach_point.global_position.x = DEADZONE * cos(angle) + self.position.x
 	attach_point.global_position.y = DEADZONE * sin(angle) + self.position.y
