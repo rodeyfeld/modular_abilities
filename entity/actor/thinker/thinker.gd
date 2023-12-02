@@ -8,9 +8,12 @@ func _ready():
 	title = "thinker"
 	controller.controller_script = thinker_controller_script.new()
 	var data_driven_ability = data_driven_ability_script.new()
-	for ability in abilities.values():
-		var parsed_ability = data_driven_ability.parse(ability)
-		add_child(parsed_ability)
+	for ability in abilities:
+		
+		abilities[ability] = data_driven_ability.parse(abilities[ability])
+		add_child(abilities[ability])
+		
+		abilities[ability].connect("ability_action_finished", work_complete)
 	# Configure deadzone for mouse
 #	var angle = self.get_angle_to(get_global_mouse_position())
 #	var distance = 100

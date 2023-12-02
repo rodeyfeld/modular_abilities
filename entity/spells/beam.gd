@@ -20,7 +20,7 @@ var thinker_scene = preload("res://entity/actor/thinker/thinker.tscn")
 
 func get_midpoint(v1:Vector2, v2:Vector2) -> Vector2:
 	return Vector2(((v1.x + v2.x) / 2), ((v1.y + v2.y) / 2))
-	
+
 func fire(persistent_abilities):
 	var end_point = initial_direction * distance
 	await self.ready
@@ -73,4 +73,4 @@ func _queue_free():
 	$AnimationPlayer.play("fade")
 	await $AnimationPlayer.animation_finished
 	self.queue_free()
-	
+
