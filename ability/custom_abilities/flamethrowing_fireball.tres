@@ -36,7 +36,7 @@ attribute_field_fire_data = SubResource("Resource_cgh5f")
 [sub_resource type="Resource" id="Resource_ddnxu"]
 script = ExtResource("1_2tx6p")
 mask_flag_type = 1
-behavior_flags = 1
+behavior_flags = 64
 name = "ice nova"
 description = "several nodes in nova mode"
 cooldown = 3.0
@@ -46,9 +46,9 @@ script = ExtResource("2_ihwyi")
 attribute_field_fire_mode_type = 1
 angle_between_shots = 0.0
 time_between_execution = 0.2
-num_execution = 3.0
-num_to_fire_per_execution = 10.0
-timeout = 3.0
+num_execution = 1.0
+num_to_fire_per_execution = 5.0
+timeout = 1.0
 arc = 0.0
 max_distance = 0.0
 
@@ -56,7 +56,7 @@ max_distance = 0.0
 script = ExtResource("3_peh6p")
 amount = 0.0
 speed = 50.0
-cooldown = 0.0
+cooldown = 1.0
 attribute_field_fire_data = SubResource("Resource_jj0hn")
 
 [sub_resource type="Resource" id="Resource_tkiwy"]

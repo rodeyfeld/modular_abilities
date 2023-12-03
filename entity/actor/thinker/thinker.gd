@@ -12,7 +12,8 @@ func _ready():
 		
 		abilities[ability] = data_driven_ability.parse(abilities[ability])
 		add_child(abilities[ability])
-		abilities[ability].connect("ability_action_finished", work_complete)
+		if not abilities[ability].channelled:
+			abilities[ability].connect("ability_action_finished", work_complete)
 	# Configure deadzone for mouse
 #	var angle = self.get_angle_to(get_global_mouse_position())
 #	var distance = 100
@@ -20,6 +21,6 @@ func _ready():
 
 
 
-func work_complete():
+func work_complete(target_pos = null):
 	print(self.title, self, " THINKER_DONE")
 	self.queue_free()

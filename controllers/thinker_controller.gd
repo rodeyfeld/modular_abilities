@@ -6,11 +6,11 @@ func update(actor):
 	
 	var abilities = actor.abilities
 	for ability in abilities.values():
-		
-		ability.execute(
-			actor,
-	 		{
-				'target_unit':actor,
-			 	'target_position': actor.global_position
-			}
-		)
+		if ability.cooldown_timer.time_left <= 0:
+			ability.execute(
+				actor,
+		 		{
+					'target_unit':actor,
+				 	'target_position': actor.global_position
+				}
+			)

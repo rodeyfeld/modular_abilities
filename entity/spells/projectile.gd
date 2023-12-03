@@ -36,7 +36,7 @@ func fire(p_owner, _timeout = -1, persistent_abilities=[]):
 		thinker.global_position = self.global_position
 		#get_midpoint(beam_line.points[0], beam_line.points[1])
 		thinker_container_node.call_deferred("add_child", thinker)
-
+		self.connect("projectile_timeout", thinker.work_complete)
 
 func on_hit():
 	pass
