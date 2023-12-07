@@ -3,6 +3,7 @@ extends Actor
 class_name Thinker
 
 @onready var thinker_controller_script = preload("res://controllers/thinker_controller.gd")
+var follow_target
 
 func _ready():
 	title = "thinker"
@@ -17,10 +18,8 @@ func _ready():
 	# Configure deadzone for mouse
 #	var angle = self.get_angle_to(get_global_mouse_position())
 #	var distance = 100
+	
 
-
-
-
-func work_complete(target_pos = null):
+func work_complete(target_pos=null):
 	print(self.title, self, " THINKER_DONE")
 	self.queue_free()

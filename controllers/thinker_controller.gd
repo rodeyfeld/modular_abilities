@@ -2,6 +2,9 @@ extends Node
 
 class_name ThinkerController
 
+var follow_target = null 
+
+
 func update(actor):
 	
 	var abilities = actor.abilities
@@ -14,3 +17,5 @@ func update(actor):
 				 	'target_position': actor.global_position
 				}
 			)
+	if follow_target:
+		actor.global_position = follow_target.global_position
