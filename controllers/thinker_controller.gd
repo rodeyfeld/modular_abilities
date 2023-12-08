@@ -17,5 +17,5 @@ func update(actor):
 				 	'target_position': actor.global_position
 				}
 			)
-	if follow_target:
+	if is_instance_valid(follow_target):
 		actor.global_position = follow_target.global_position
