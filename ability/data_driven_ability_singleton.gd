@@ -22,6 +22,7 @@ enum event_types {
 enum action_type {
 	NONE,
 	DAMAGE,
+	KNOCKBACK,
 	HEAL,
 	LINEAR_PROJECTILE,
 	BEAM_PROJECTILE,
@@ -63,6 +64,7 @@ enum behavior_flag {
 # TODO: Refactor this to point to class names or a more complex mapping table
 var action_type_map = {
 	action_type.DAMAGE: "res://ability/action/damage.gd",
+	action_type.KNOCKBACK: "res://ability/action/knockback.gd",
 	action_type.LINEAR_PROJECTILE: "res://ability/action/linear_projectile.gd",
 	action_type.HEAL: "res://ability/action/heal.gd",
 	action_type.AUXILIARY: "res://ability/action/auxiliary.gd",

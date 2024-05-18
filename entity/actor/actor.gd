@@ -14,12 +14,19 @@ var DEADZONE:float = 100.0
 var input_controller = null
 
 
+func _physics_process(delta):
+	velocity = velocity * delta
+	move_and_slide()
+
 func update_health(amount, _title):
 	# Any time this function called, it will update the health and provide 
 	# a title for what caused it
 	print("HEALTH_BEFORE: ", health)
 	health += amount
 	print("HEALTH_AFTER: ", health)
+
+func push_body(amount, origin, _title):
+	velocity = amount * origin
 
 func get_target():
 	pass

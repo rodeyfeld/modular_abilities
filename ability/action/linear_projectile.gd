@@ -45,4 +45,4 @@ func execute(caster_ability:Ability, _target:Actor, target_position:Vector2):
 			self.data.persistent_abilities
 		)
 		# Free the attach node 
-		#attach_node.queue_free()
+		attach_node.queue_free()

@@ -38,7 +38,7 @@ script = ExtResource("3_3tvx4")
 attribute_fields = SubResource("Resource_wgylr")
 trigger_abilities = Array[ExtResource("1_s4i4v")]([])
 persistent_abilities = Array[ExtResource("1_s4i4v")]([])
-action_type = 3
+action_type = 4
 target_type = 2
 to_be_removed = false
 

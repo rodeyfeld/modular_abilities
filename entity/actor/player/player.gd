@@ -7,7 +7,7 @@ const basic_spells_class = preload("res://ability/custom_abilities/build_default
 
 @onready var ability_offensive_attach_point:Marker2D = $AttachPoint/AbilityOffensiveAttachPoint
 @onready var player_controller_script = preload("res://controllers/player_controller.gd")
-
+@export var speed = 400
 var test_spell = null
 
 func _ready():
@@ -50,7 +50,13 @@ func _physics_process(delta):
 	var distance = 100
 	ability_offensive_attach_point.global_position.x = distance * cos(angle) + self.position.x
 	ability_offensive_attach_point.global_position.y = distance * sin(angle) + self.position.y
-	super._physics_process(delta)
+	get_input()
+	controller.controller_script.update(self)
+	move_and_slide()
 
+
+func get_input():
+	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	velocity = input_direction * speed
 
 
